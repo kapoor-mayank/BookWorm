@@ -64,4 +64,14 @@ public class MyShelf {
 	public void setCustomerId(CustomerMaster customerId) {
 		this.customerId = customerId;
 	}
+	@Override
+	public String toString() {
+		return "MyShelf [shelfId=" + shelfId + ", customerId=" + customerId + ", product=" + product + ", tranType="
+				+ tranType + ", productExpiryDate=" + productExpiryDate + ", isActive=" + isActive + "]";
+	}
+	
+	
+    
+    // Getter and setter methods
+    
 }
