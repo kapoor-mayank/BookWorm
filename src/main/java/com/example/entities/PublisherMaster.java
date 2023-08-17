@@ -8,14 +8,14 @@ import jakarta.persistence.Id;
 @Entity
 public class PublisherMaster {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long publisherId;
-    
-    private String publisherName;
-    
-    private String publisherContactNo;
-    // Other publisher attributes
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long publisherId;
+
+	private String publisherName;
+
+	private String publisherContactNo;
+	// Other publisher attributes
 
 	public Long getPublisherId() {
 		return publisherId;
@@ -40,7 +40,6 @@ public class PublisherMaster {
 	public void setPublisherContactNo(String publisherContactNo) {
 		this.publisherContactNo = publisherContactNo;
 	}
-    
-    // Getter and setter methods
-    
+
+	// Getter and setter methods
 }

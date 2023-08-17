@@ -11,8 +11,22 @@ public class AttributeMaster {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long attributeId;
-    
     private String attributeDesc;
     
-    // Getter and setter methods
+    public Long getAttributeId() {
+		return attributeId;
+	}
+
+	public void setAttributeId(Long attributeId) {
+		this.attributeId = attributeId;
+	}
+
+	public String getAttributeDesc() {
+		return attributeDesc;
+	}
+
+	public void setAttributeDesc(String attributeDesc) {
+		this.attributeDesc = attributeDesc;
+	}
+
 }

@@ -2,6 +2,7 @@ package com.example.entities;
 
 import java.sql.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,16 +13,16 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class InvoiceTable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long invoiceId;
-    
-    private Date invoiceDate;
-    
-    @ManyToOne
-    @JoinColumn(name = "custId")
-    private CustomerMaster customerId;
-    private double invoiceAmount;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long invoiceId;
+
+	private Date invoiceDate;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "custId")
+	private CustomerMaster customerId;
+	private Double invoiceAmount;
 
 	public Long getInvoiceId() {
 		return invoiceId;
@@ -47,7 +48,7 @@ public class InvoiceTable {
 		this.invoiceDate = invoiceDate;
 	}
 
-	public double getInvoiceAmount() {
+	public Double getInvoiceAmount() {
 		return invoiceAmount;
 	}
 
@@ -55,7 +56,10 @@ public class InvoiceTable {
 		this.invoiceAmount = invoiceAmount;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "InvoiceTable [invoiceId=" + invoiceId + ", invoiceDate=" + invoiceDate + ", customerId=" + customerId
+				+ ", invoiceAmount=" + invoiceAmount + "]";
+	}
 
 }
