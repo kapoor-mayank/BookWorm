@@ -13,6 +13,14 @@ public class AttributeMaster {
     private Long attributeId;
     
     private String attributeDesc;
+
+	public String getAttributeDesc() {
+		return attributeDesc;
+	}
+
+	public void setAttributeDesc(String attributeDesc) {
+		this.attributeDesc = attributeDesc;
+	}
     
     // Getter and setter methods
 }
