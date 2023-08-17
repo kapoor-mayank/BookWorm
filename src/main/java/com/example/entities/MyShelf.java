@@ -16,10 +16,10 @@ public class MyShelf {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shelfId;
     
-//    @ManyToOne
-//    @JoinColumn(name = "customerId")
-//    private long customerId;
-//    
+    @ManyToOne
+    @JoinColumn(name = "customerId")
+  private CustomerMaster customerId;
+   
     @ManyToOne
     @JoinColumn(name = "productId")
     private ProductMaster product;

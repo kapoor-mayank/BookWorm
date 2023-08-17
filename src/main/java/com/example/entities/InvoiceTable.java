@@ -18,5 +18,11 @@ public class InvoiceTable {
 
 	private Date invoiceDate;
 	
+	@ManyToOne
+    @JoinColumn(name = "custId")
+    private CustomerMaster customerId;
+
+
 	private double invoiceAmount;
+	
 }

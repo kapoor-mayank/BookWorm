@@ -36,9 +36,10 @@ public class ProductMaster {
     private String productISBN;
     private String productAuthor;
     
-//    @ManyToOne
-//    @JoinColumn(name = "productPublisher")
-//    private PublisherMaster productPublisher;
+    @ManyToOne
+    @JoinColumn(name = "productPublisher")
+    private PublisherMaster productPublisher;
+
     
     @ManyToOne
     @JoinColumn(name = "productLang")

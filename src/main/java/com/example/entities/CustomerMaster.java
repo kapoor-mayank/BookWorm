@@ -1,5 +1,7 @@
 package com.example.entities;
 
+
+
 import java.sql.Date;
 
 import jakarta.persistence.Entity;
@@ -65,5 +67,4 @@ public class CustomerMaster {
 	}
     
     // Getter and setter methods
-    
 }
