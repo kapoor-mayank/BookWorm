@@ -16,10 +16,10 @@ public class MyShelf {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shelfId;
     
-    @ManyToOne
-    @JoinColumn(name = "customerId")
-    private CustomerMaster customerId;
-   
+//    @ManyToOne
+//    @JoinColumn(name = "customerId")
+//    private long customerId;
+//    
     @ManyToOne
     @JoinColumn(name = "productId")
     private ProductMaster product;
@@ -57,11 +57,7 @@ public class MyShelf {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	
-	public CustomerMaster getCustomerId() {
-		return customerId;
-	}
-	public void setCustomerId(CustomerMaster customerId) {
-		this.customerId = customerId;
-	}
+    
+    // Getter and setter methods
+    
 }
