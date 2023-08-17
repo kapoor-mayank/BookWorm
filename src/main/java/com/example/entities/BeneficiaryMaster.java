@@ -18,12 +18,13 @@ public class BeneficiaryMaster {
     private String benContactNo;
     private String benBankName;
     private String benBankBranch;
-    public Long getBenId() {
-		return benId;
-	}
-	public void setBenId(Long benId) {
-		this.benId = benId;
-	}
+    private String benIFSC;
+    private String benAccNo;
+    private String benAccType;
+    private String benPAN;
+    
+    
+    
 	public String getBenName() {
 		return benName;
 	}
@@ -78,10 +79,15 @@ public class BeneficiaryMaster {
 	public void setBenPAN(String benPAN) {
 		this.benPAN = benPAN;
 	}
-	private String benIFSC;
-    private String benAccNo;
-    private String benAccType;
-    private String benPAN;
+	@Override
+	public String toString() {
+		return "BeneficiaryMaster [benId=" + benId + ", benName=" + benName + ", benEmailId=" + benEmailId
+				+ ", benContactNo=" + benContactNo + ", benBankName=" + benBankName + ", benBankBranch=" + benBankBranch
+				+ ", benIFSC=" + benIFSC + ", benAccNo=" + benAccNo + ", benAccType=" + benAccType + ", benPAN="
+				+ benPAN + "]";
+	}
+	
+	
     
     // Getter and setter methods
 }

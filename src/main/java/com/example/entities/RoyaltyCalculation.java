@@ -2,7 +2,6 @@ package com.example.entities;
 
 import java.sql.Date;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,45 +16,30 @@ public class RoyaltyCalculation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roycalId;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "invoiceId")
     private InvoiceTable invoice;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "benId")
     private BeneficiaryMaster beneficiary;
     
     private Date roycalTrandate;
     
-    public Long getRoycalId() {
-		return roycalId;
-	}
-	public void setRoycalId(Long roycalId) {
-		this.roycalId = roycalId;
-	}
-	public InvoiceTable getInvoice() {
-		return invoice;
-	}
-	public void setInvoice(InvoiceTable invoice) {
-		this.invoice = invoice;
-	}
-	public BeneficiaryMaster getBeneficiary() {
-		return beneficiary;
-	}
-	public void setBeneficiary(BeneficiaryMaster beneficiary) {
-		this.beneficiary = beneficiary;
-	}
+    @ManyToOne
+    @JoinColumn(name = "prodId")
+    private ProductMaster product;
+    
+    private int qty;
+    private String tranType;
+    private double salePrice;
+    private double basePrice;
+    private double royaltyOnBasePrice;
 	public Date getRoycalTrandate() {
 		return roycalTrandate;
 	}
 	public void setRoycalTrandate(Date roycalTrandate) {
 		this.roycalTrandate = roycalTrandate;
-	}
-	public ProductMaster getProduct() {
-		return product;
-	}
-	public void setProduct(ProductMaster product) {
-		this.product = product;
 	}
 	public int getQty() {
 		return qty;
@@ -87,22 +71,13 @@ public class RoyaltyCalculation {
 	public void setRoyaltyOnBasePrice(double royaltyOnBasePrice) {
 		this.royaltyOnBasePrice = royaltyOnBasePrice;
 	}
-	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "prodId")
-    private ProductMaster product;
-    
-    @Override
+	@Override
 	public String toString() {
 		return "RoyaltyCalculation [roycalId=" + roycalId + ", invoice=" + invoice + ", beneficiary=" + beneficiary
 				+ ", roycalTrandate=" + roycalTrandate + ", product=" + product + ", qty=" + qty + ", tranType="
 				+ tranType + ", salePrice=" + salePrice + ", basePrice=" + basePrice + ", royaltyOnBasePrice="
 				+ royaltyOnBasePrice + "]";
 	}
-	private int qty;
-    private String tranType;
-    private double salePrice;
-    private double basePrice;
-    private double royaltyOnBasePrice;
     
     // Getter and setter methods
 }

@@ -17,14 +17,6 @@ public class PublisherMaster {
     private String publisherContactNo;
     // Other publisher attributes
 
-	public Long getPublisherId() {
-		return publisherId;
-	}
-
-	public void setPublisherId(Long publisherId) {
-		this.publisherId = publisherId;
-	}
-
 	public String getPublisherName() {
 		return publisherName;
 	}
@@ -40,7 +32,12 @@ public class PublisherMaster {
 	public void setPublisherContactNo(String publisherContactNo) {
 		this.publisherContactNo = publisherContactNo;
 	}
+
+	@Override
+	public String toString() {
+		return "PublisherMaster [publisherId=" + publisherId + ", publisherName=" + publisherName
+				+ ", publisherContactNo=" + publisherContactNo + "]";
+	}
     
     // Getter and setter methods
-    
 }

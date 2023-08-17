@@ -18,6 +18,20 @@ public class LanguageMaster {
     @OneToOne
     @JoinColumn(name = "typeId")
     private ProductTypeMaster productType;
+
+	public String getLanguageDesc() {
+		return languageDesc;
+	}
+
+	public void setLanguageDesc(String languageDesc) {
+		this.languageDesc = languageDesc;
+	}
+
+	@Override
+	public String toString() {
+		return "LanguageMaster [languageId=" + languageId + ", languageDesc=" + languageDesc + ", productType="
+				+ productType + "]";
+	}
     
     // Getter and setter methods
 }

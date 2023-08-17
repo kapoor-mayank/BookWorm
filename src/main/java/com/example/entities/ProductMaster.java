@@ -10,52 +10,48 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
+
+
 @Entity
 public class ProductMaster {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long productId;
-
-	private String productName;
-	private String productEnglishName;
-
-	@OneToOne
-	@JoinColumn(name = "typeId")
-	private ProductTypeMaster productType;
-
-	private double productBasePrice;
-	private double productSpCost;
-	private double productOfferPrice;
-	private Date productOffPriceExpiryDate;
-
-	private String productDescriptionShort;
-	private String productDescriptionLong;
-	private String productISBN;
-	private String productAuthor;
-
-	@ManyToOne
-	@JoinColumn(name = "productPublisher")
-	private PublisherMaster productPublisher;
-
-	@ManyToOne
-	@JoinColumn(name = "productLang")
-	private LanguageMaster productLang;
-
-	@ManyToOne
-	@JoinColumn(name = "productGenre")
-	private GenreMaster productGenre;
-
-	private boolean isRentable;
-	private boolean isLibrary;
-	private double rentPerDay;
-	private double minRentDays;
-	public Long getProductId() {
-		return productId;
-	}
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long productId;
+    
+    private String productName;
+    private String productEnglishName;
+    
+    @OneToOne
+    @JoinColumn(name = "typeId")
+    private ProductTypeMaster productType;
+    
+    private double productBasePrice;
+    private double productSpCost;
+    private double productOfferPrice;
+    private Date productOffPriceExpiryDate;
+    
+    private String productDescriptionShort;
+    private String productDescriptionLong;
+    private String productISBN;
+    private String productAuthor;
+    
+//    @ManyToOne
+//    @JoinColumn(name = "productPublisher")
+//    private PublisherMaster productPublisher;
+    
+    @ManyToOne
+    @JoinColumn(name = "productLang")
+    private LanguageMaster productLang;
+    
+    @ManyToOne
+    @JoinColumn(name = "productGenre")
+    private GenreMaster productGenre;
+    
+    private boolean isRentable;
+    private boolean isLibrary;
+    private double rentPerDay;
+    private double minRentDays;
 	public String getProductName() {
 		return productName;
 	}
@@ -67,12 +63,6 @@ public class ProductMaster {
 	}
 	public void setProductEnglishName(String productEnglishName) {
 		this.productEnglishName = productEnglishName;
-	}
-	public ProductTypeMaster getProductType() {
-		return productType;
-	}
-	public void setProductType(ProductTypeMaster productType) {
-		this.productType = productType;
 	}
 	public double getProductBasePrice() {
 		return productBasePrice;
@@ -122,35 +112,11 @@ public class ProductMaster {
 	public void setProductAuthor(String productAuthor) {
 		this.productAuthor = productAuthor;
 	}
-	public PublisherMaster getProductPublisher() {
-		return productPublisher;
-	}
-	public void setProductPublisher(PublisherMaster productPublisher) {
-		this.productPublisher = productPublisher;
-	}
-	public LanguageMaster getProductLang() {
-		return productLang;
-	}
-	public void setProductLang(LanguageMaster productLang) {
-		this.productLang = productLang;
-	}
-	public GenreMaster getProductGenre() {
-		return productGenre;
-	}
-	public void setProductGenre(GenreMaster productGenre) {
-		this.productGenre = productGenre;
-	}
 	public boolean isRentable() {
 		return isRentable;
 	}
 	public void setRentable(boolean isRentable) {
 		this.isRentable = isRentable;
-	}
-	public boolean isLibrary() {
-		return isLibrary;
-	}
-	public void setLibrary(boolean isLibrary) {
-		this.isLibrary = isLibrary;
 	}
 	public double getRentPerDay() {
 		return rentPerDay;
@@ -158,12 +124,29 @@ public class ProductMaster {
 	public void setRentPerDay(double rentPerDay) {
 		this.rentPerDay = rentPerDay;
 	}
+	public boolean isLibrary() {
+		return isLibrary;
+	}
+	public void setLibrary(boolean isLibrary) {
+		this.isLibrary = isLibrary;
+	}
 	public double getMinRentDays() {
 		return minRentDays;
 	}
 	public void setMinRentDays(double minRentDays) {
 		this.minRentDays = minRentDays;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "ProductMaster [productId=" + productId + ", productName=" + productName + ", productEnglishName="
+				+ productEnglishName + ", productType=" + productType + ", productBasePrice=" + productBasePrice
+				+ ", productSpCost=" + productSpCost + ", productOfferPrice=" + productOfferPrice
+				+ ", productOffPriceExpiryDate=" + productOffPriceExpiryDate + ", productDescriptionShort="
+				+ productDescriptionShort + ", productDescriptionLong=" + productDescriptionLong + ", productISBN="
+				+ productISBN + ", productAuthor=" + productAuthor + ", productLang=" + productLang + ", productGenre="
+				+ productGenre + ", isRentable=" + isRentable + ", isLibrary=" + isLibrary + ", rentPerDay="
+				+ rentPerDay + ", minRentDays=" + minRentDays + "]";
+	}
+    
+    // Getter and setter methods
 }

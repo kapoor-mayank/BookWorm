@@ -44,4 +44,10 @@ public class GenreMaster {
 		this.language = language;
 	}
 
+	@Override
+	public String toString() {
+		return "GenreMaster [genreId=" + genreId + ", genreDesc=" + genreDesc + ", language=" + language + "]";
+	}
+	
+
 }

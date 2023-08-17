@@ -21,12 +21,6 @@ public class CustomerMaster {
     private Date premiumDate;
     private String customerContactNo;
     // Other customer attributes
-	public Long getCustomerId() {
-		return customerId;
-	}
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
-	}
 	public String getCustomerName() {
 		return customerName;
 	}
@@ -63,7 +57,12 @@ public class CustomerMaster {
 	public void setCustomerContactNo(String customerContactNo) {
 		this.customerContactNo = customerContactNo;
 	}
+	@Override
+	public String toString() {
+		return "CustomerMaster [customerId=" + customerId + ", customerName=" + customerName + ", customerEmail="
+				+ customerEmail + ", password=" + password + ", isPremium=" + isPremium + ", premiumDate=" + premiumDate
+				+ ", customerContactNo=" + customerContactNo + "]";
+	}
     
     // Getter and setter methods
-    
 }

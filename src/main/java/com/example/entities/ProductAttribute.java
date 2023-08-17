@@ -23,4 +23,19 @@ public class ProductAttribute {
     private ProductMaster product;
     
     private String attributeValue;
+
+	public String getAttributeValue() {
+		return attributeValue;
+	}
+
+	public void setAttributeValue(String attributeValue) {
+		this.attributeValue = attributeValue;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductAttribute [prodAttId=" + prodAttId + ", attribute=" + attribute + ", product=" + product
+				+ ", attributeValue=" + attributeValue + "]";
+	}
+	
 }

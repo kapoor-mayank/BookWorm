@@ -12,32 +12,13 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class InvoiceTable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long invoiceId;
-    
-    private Date invoiceDate;
-    
-    @ManyToOne
-    @JoinColumn(name = "custId")
-    private CustomerMaster customerId;
-    private double invoiceAmount;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long invoiceId;
 
-	public Long getInvoiceId() {
-		return invoiceId;
-	}
-
-	public void setInvoiceId(Long invoiceId) {
-		this.invoiceId = invoiceId;
-	}
-
-	public CustomerMaster getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(CustomerMaster customerId) {
-		this.customerId = customerId;
-	}
+	private Date invoiceDate;
+	
+	private double invoiceAmount;
 
 	public Date getInvoiceDate() {
 		return invoiceDate;
@@ -55,7 +36,10 @@ public class InvoiceTable {
 		this.invoiceAmount = invoiceAmount;
 	}
 
+	@Override
+	public String toString() {
+		return "InvoiceTable [invoiceId=" + invoiceId + ", invoiceDate=" + invoiceDate + ", invoiceAmount="
+				+ invoiceAmount + "]";
+	}
 	
-	
-
 }

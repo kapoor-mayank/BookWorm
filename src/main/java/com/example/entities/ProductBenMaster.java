@@ -23,6 +23,20 @@ public class ProductBenMaster {
     private ProductMaster product;
     
     private double prodBenPercentage;
+
+	public double getProdBenPercentage() {
+		return prodBenPercentage;
+	}
+
+	public void setProdBenPercentage(double prodBenPercentage) {
+		this.prodBenPercentage = prodBenPercentage;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductBenMaster [prodBenId=" + prodBenId + ", beneficiary=" + beneficiary + ", product=" + product
+				+ ", prodBenPercentage=" + prodBenPercentage + "]";
+	}
     
     // Getter and setter methods
 }

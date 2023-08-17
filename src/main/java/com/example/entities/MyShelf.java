@@ -16,9 +16,9 @@ public class MyShelf {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shelfId;
     
-    @ManyToOne
-    @JoinColumn(name = "customerId")
-    private CustomerMaster customerId;
+//    @ManyToOne
+//    @JoinColumn(name = "customerId")
+//    private long customerId;
    
     @ManyToOne
     @JoinColumn(name = "productId")
@@ -27,18 +27,6 @@ public class MyShelf {
     private String tranType;
     private Date productExpiryDate;
     private boolean isActive;
-	public Long getShelfId() {
-		return shelfId;
-	}
-	public void setShelfId(Long shelfId) {
-		this.shelfId = shelfId;
-	}
-	public ProductMaster getProduct() {
-		return product;
-	}
-	public void setProduct(ProductMaster product) {
-		this.product = product;
-	}
 	public String getTranType() {
 		return tranType;
 	}
@@ -57,11 +45,11 @@ public class MyShelf {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	
-	public CustomerMaster getCustomerId() {
-		return customerId;
+	@Override
+	public String toString() {
+		return "MyShelf [shelfId=" + shelfId + ", product=" + product + ", tranType=" + tranType
+				+ ", productExpiryDate=" + productExpiryDate + ", isActive=" + isActive + "]";
 	}
-	public void setCustomerId(CustomerMaster customerId) {
-		this.customerId = customerId;
-	}
+    
+    // Getter and setter methods
 }
