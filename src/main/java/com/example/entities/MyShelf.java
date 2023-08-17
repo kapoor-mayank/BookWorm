@@ -19,7 +19,7 @@ public class MyShelf {
     @ManyToOne
     @JoinColumn(name = "customerId")
     private CustomerMaster customerId;
-   
+    
     @ManyToOne
     @JoinColumn(name = "productId")
     private ProductMaster product;
@@ -32,6 +32,12 @@ public class MyShelf {
 	}
 	public void setShelfId(Long shelfId) {
 		this.shelfId = shelfId;
+	}
+	public CustomerMaster getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(CustomerMaster customerId) {
+		this.customerId = customerId;
 	}
 	public ProductMaster getProduct() {
 		return product;
@@ -57,11 +63,6 @@ public class MyShelf {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	
-	public CustomerMaster getCustomerId() {
-		return customerId;
-	}
-	public void setCustomerId(CustomerMaster customerId) {
-		this.customerId = customerId;
-	}
+    
+    
 }

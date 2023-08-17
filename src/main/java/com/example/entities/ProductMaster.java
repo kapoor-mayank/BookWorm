@@ -1,8 +1,13 @@
 package com.example.entities;
 
 import java.sql.Date;
+import java.util.UUID;
 
+import org.hibernate.annotations.Fetch;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,46 +15,64 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
+
+
 @Entity
 public class ProductMaster {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long productId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY
+    )
+    private Long productId;
+    
+    private String productName;
+    private String productEnglishName;
+    
+    private boolean isRentable;
+    
+    private boolean isLibrary;
+    
+    private double rentPerDay;
+    
+    private double minRentDays;
+    
+    private double productBasePrice;
+    
+    private double productSpCost;
+    
+    private double productOfferPrice;
+    
+    private Date productOffPriceExpiryDate;
+    
+    private String productDescriptionShort;
+    
+    private String productDescriptionLong;
+    
+    private String productISBN;
+    
+    private String productAuthor;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "typeId")
+    private ProductTypeMaster productType;
+    
+    @ManyToOne( cascade = CascadeType.ALL )
+    @JoinColumn(name = "productPublisher")
+    private PublisherMaster productPublisher;
+    
+    @ManyToOne(cascade = CascadeType.ALL )
+    @JoinColumn(name = "productLang")
+    private LanguageMaster productLang;
+    
+    @ManyToOne(cascade = CascadeType.ALL )
+    @JoinColumn(name = "productGenre")
+    private GenreMaster productGenre;
+    
+ 
+ 
+    
+    
 
-	private String productName;
-	private String productEnglishName;
-
-	@OneToOne
-	@JoinColumn(name = "typeId")
-	private ProductTypeMaster productType;
-
-	private double productBasePrice;
-	private double productSpCost;
-	private double productOfferPrice;
-	private Date productOffPriceExpiryDate;
-
-	private String productDescriptionShort;
-	private String productDescriptionLong;
-	private String productISBN;
-	private String productAuthor;
-
-	@ManyToOne
-	@JoinColumn(name = "productPublisher")
-	private PublisherMaster productPublisher;
-
-	@ManyToOne
-	@JoinColumn(name = "productLang")
-	private LanguageMaster productLang;
-
-	@ManyToOne
-	@JoinColumn(name = "productGenre")
-	private GenreMaster productGenre;
-
-	private boolean isRentable;
-	private boolean isLibrary;
-	private double rentPerDay;
-	private double minRentDays;
 	public Long getProductId() {
 		return productId;
 	}
@@ -164,6 +187,24 @@ public class ProductMaster {
 	public void setMinRentDays(double minRentDays) {
 		this.minRentDays = minRentDays;
 	}
+	@Override
+	public String toString() {
+		return "ProductMaster [productId=" + productId + ", productName=" + productName + ", productEnglishName="
+				+ productEnglishName + ", isRentable=" + isRentable + ", isLibrary=" + isLibrary + ", rentPerDay="
+				+ rentPerDay + ", minRentDays=" + minRentDays + ", productBasePrice=" + productBasePrice
+				+ ", productSpCost=" + productSpCost + ", productOfferPrice=" + productOfferPrice
+				+ ", productOffPriceExpiryDate=" + productOffPriceExpiryDate + ", productDescriptionShort="
+				+ productDescriptionShort + ", productDescriptionLong=" + productDescriptionLong + ", productISBN="
+				+ productISBN + ", productAuthor=" + productAuthor + ", productType=" + productType
+				+ ", productPublisher=" + productPublisher + ", productLang=" + productLang + ", productGenre="
+				+ productGenre + "]";
+	}
 	
 	
+	
+    
+    
+    
+    
+    
 }

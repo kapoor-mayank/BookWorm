@@ -1,6 +1,8 @@
 package com.example.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,15 +12,15 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class GenreMaster {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long genreId;
-
-	private String genreDesc;
-
-	@ManyToOne
-	@JoinColumn(name = "languageId")
-	private LanguageMaster language;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long genreId;
+    
+    private String genreDesc;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "languageId")
+    private LanguageMaster language;
 
 	public Long getGenreId() {
 		return genreId;
@@ -43,5 +45,10 @@ public class GenreMaster {
 	public void setLanguage(LanguageMaster language) {
 		this.language = language;
 	}
-
+    
+    
+    
+    
+    
+    
 }

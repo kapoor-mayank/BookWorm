@@ -18,7 +18,12 @@ public class BeneficiaryMaster {
     private String benContactNo;
     private String benBankName;
     private String benBankBranch;
-    public Long getBenId() {
+    private String benIFSC;
+    private String benAccNo;
+    private String benAccType;
+    private String benPAN;
+    
+	public Long getBenId() {
 		return benId;
 	}
 	public void setBenId(Long benId) {
@@ -78,10 +83,6 @@ public class BeneficiaryMaster {
 	public void setBenPAN(String benPAN) {
 		this.benPAN = benPAN;
 	}
-	private String benIFSC;
-    private String benAccNo;
-    private String benAccType;
-    private String benPAN;
     
-    // Getter and setter methods
+    
 }

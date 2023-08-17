@@ -21,6 +21,7 @@ public class InvoiceTable {
     @ManyToOne
     @JoinColumn(name = "custId")
     private CustomerMaster customerId;
+    
     private double invoiceAmount;
 
 	public Long getInvoiceId() {
@@ -31,20 +32,20 @@ public class InvoiceTable {
 		this.invoiceId = invoiceId;
 	}
 
-	public CustomerMaster getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(CustomerMaster customerId) {
-		this.customerId = customerId;
-	}
-
 	public Date getInvoiceDate() {
 		return invoiceDate;
 	}
 
 	public void setInvoiceDate(Date invoiceDate) {
 		this.invoiceDate = invoiceDate;
+	}
+
+	public CustomerMaster getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(CustomerMaster customerId) {
+		this.customerId = customerId;
 	}
 
 	public double getInvoiceAmount() {
@@ -54,8 +55,10 @@ public class InvoiceTable {
 	public void setInvoiceAmount(double invoiceAmount) {
 		this.invoiceAmount = invoiceAmount;
 	}
-
-	
-	
-
+    
+    
+    
+    
+    
+    
 }

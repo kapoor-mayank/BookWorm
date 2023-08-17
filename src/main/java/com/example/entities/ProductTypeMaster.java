@@ -29,4 +29,9 @@ public class ProductTypeMaster {
 	public void setTypeDesc(String typeDesc) {
 		this.typeDesc = typeDesc;
 	}
+    
+    
+    
+    
+    
 }

@@ -23,6 +23,38 @@ public class ProductBenMaster {
     private ProductMaster product;
     
     private double prodBenPercentage;
+
+	public Long getProdBenId() {
+		return prodBenId;
+	}
+
+	public void setProdBenId(Long prodBenId) {
+		this.prodBenId = prodBenId;
+	}
+
+	public BeneficiaryMaster getBeneficiary() {
+		return beneficiary;
+	}
+
+	public void setBeneficiary(BeneficiaryMaster beneficiary) {
+		this.beneficiary = beneficiary;
+	}
+
+	public ProductMaster getProduct() {
+		return product;
+	}
+
+	public void setProduct(ProductMaster product) {
+		this.product = product;
+	}
+
+	public double getProdBenPercentage() {
+		return prodBenPercentage;
+	}
+
+	public void setProdBenPercentage(double prodBenPercentage) {
+		this.prodBenPercentage = prodBenPercentage;
+	}
     
-    // Getter and setter methods
+   
 }
