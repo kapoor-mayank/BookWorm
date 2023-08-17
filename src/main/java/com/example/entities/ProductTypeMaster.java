@@ -11,22 +11,22 @@ public class ProductTypeMaster {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long typeId;
-    
     private String typeDesc;
-
 	public Long getTypeId() {
 		return typeId;
 	}
-
 	public void setTypeId(Long typeId) {
 		this.typeId = typeId;
 	}
-
 	public String getTypeDesc() {
 		return typeDesc;
 	}
-
 	public void setTypeDesc(String typeDesc) {
 		this.typeDesc = typeDesc;
 	}
+	@Override
+	public String toString() {
+		return "ProductTypeMaster [typeId=" + typeId + ", typeDesc=" + typeDesc + "]";
+	}
+	
 }

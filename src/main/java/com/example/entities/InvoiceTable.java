@@ -55,7 +55,10 @@ public class InvoiceTable {
 		this.invoiceAmount = invoiceAmount;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "InvoiceTable [invoiceId=" + invoiceId + ", invoiceDate=" + invoiceDate + ", customerId=" + customerId
+				+ ", invoiceAmount=" + invoiceAmount + "]";
+	}
 
 }

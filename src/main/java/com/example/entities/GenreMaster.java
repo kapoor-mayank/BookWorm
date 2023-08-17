@@ -10,15 +10,15 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class GenreMaster {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long genreId;
-
-	private String genreDesc;
-
-	@ManyToOne
-	@JoinColumn(name = "languageId")
-	private LanguageMaster language;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long genreId;
+    
+    private String genreDesc;
+    
+    @ManyToOne
+    @JoinColumn(name = "languageId")
+    private LanguageMaster language;
 
 	public Long getGenreId() {
 		return genreId;
@@ -44,4 +44,10 @@ public class GenreMaster {
 		this.language = language;
 	}
 
+	@Override
+	public String toString() {
+		return "GenreMaster [genreId=" + genreId + ", genreDesc=" + genreDesc + ", language=" + language + "]";
+	}
+
+	
 }

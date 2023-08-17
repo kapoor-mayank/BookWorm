@@ -63,7 +63,12 @@ public class CustomerMaster {
 	public void setCustomerContactNo(String customerContactNo) {
 		this.customerContactNo = customerContactNo;
 	}
+	@Override
+	public String toString() {
+		return "CustomerMaster [customerId=" + customerId + ", customerName=" + customerName + ", customerEmail="
+				+ customerEmail + ", password=" + password + ", isPremium=" + isPremium + ", premiumDate=" + premiumDate
+				+ ", customerContactNo=" + customerContactNo + "]";
+	}
     
     // Getter and setter methods
-    
 }

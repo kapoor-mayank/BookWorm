@@ -13,6 +13,28 @@ public class AttributeMaster {
     private Long attributeId;
     
     private String attributeDesc;
+
+	public Long getAttributeId() {
+		return attributeId;
+	}
+
+	public void setAttributeId(Long attributeId) {
+		this.attributeId = attributeId;
+	}
+
+	public String getAttributeDesc() {
+		return attributeDesc;
+	}
+
+	public void setAttributeDesc(String attributeDesc) {
+		this.attributeDesc = attributeDesc;
+	}
+
+	@Override
+	public String toString() {
+		return "AttributeMaster [attributeId=" + attributeId + ", attributeDesc=" + attributeDesc + "]";
+	}
     
     // Getter and setter methods
+    
 }

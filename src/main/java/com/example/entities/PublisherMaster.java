@@ -40,7 +40,12 @@ public class PublisherMaster {
 	public void setPublisherContactNo(String publisherContactNo) {
 		this.publisherContactNo = publisherContactNo;
 	}
+
+	@Override
+	public String toString() {
+		return "PublisherMaster [publisherId=" + publisherId + ", publisherName=" + publisherName
+				+ ", publisherContactNo=" + publisherContactNo + "]";
+	}
     
     // Getter and setter methods
-    
 }

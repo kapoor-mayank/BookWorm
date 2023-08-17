@@ -18,6 +18,34 @@ public class LanguageMaster {
     @OneToOne
     @JoinColumn(name = "typeId")
     private ProductTypeMaster productType;
-    
-    // Getter and setter methods
+
+	public Long getLanguageId() {
+		return languageId;
+	}
+
+	public void setLanguageId(Long languageId) {
+		this.languageId = languageId;
+	}
+
+	public String getLanguageDesc() {
+		return languageDesc;
+	}
+
+	public void setLanguageDesc(String languageDesc) {
+		this.languageDesc = languageDesc;
+	}
+
+	public ProductTypeMaster getProductType() {
+		return productType;
+	}
+
+	public void setProductType(ProductTypeMaster productType) {
+		this.productType = productType;
+	}
+
+	@Override
+	public String toString() {
+		return "LanguageMaster [languageId=" + languageId + ", languageDesc=" + languageDesc + ", productType="
+				+ productType + "]";
+	}
 }
