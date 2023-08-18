@@ -16,7 +16,9 @@ public interface InvoiceDetailRepository extends JpaRepository<InvoiceDetails, L
 	List<InvoiceDetails> findByQuantity(Long quantity);
 	List<InvoiceDetails> findByBasePrice(Double basePrice);
 	
-	//@Query("UPDATE invoice_details SET quantity = :quantity WHERE inv_dtl_id = :Id")
-	//InvoiceDetails updateInvoiceDetails(@Param(value = "Id") Long Id,@Param(value = "quantity")Long quantity);
+	@Query("UPDATE InvoiceDetails SET quantity = :quantity WHERE invDtlId = :invDtlId")
+	InvoiceDetails updateQuantity(@Param(value = "invDtlId") Long Id,@Param(value = "quantity")Long quantity);
 	
+	@Query("UPDATE InvoiceDetails SET tranType = :tranType WHERE invDtlId = :invDtlId")
+	InvoiceDetails updateTranType(@Param(value = "invDtlId") Long Id,@Param(value = "tranType")String tranType);
 }

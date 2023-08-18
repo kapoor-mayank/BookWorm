@@ -12,8 +12,11 @@ public interface InvoiceDetailService {
 	public List<InvoiceDetails> getByBasePrice(Double basePrice);
 	public List<InvoiceDetails> getByTranType(String tranType);
 	
-	public InvoiceDetails updateInvoiceDetails(Long id,InvoiceDetails invdetails) ;
+
 	public Optional<InvoiceDetails> deleteInvoiceDetailsById(Long id);
 	
 	public void setInvoiceDetails(InvoiceDetails invdetails);
+	public InvoiceDetails updateQuantity(Long id, InvoiceDetails invdetails);
+	public InvoiceDetails updateTranType(Long id,	InvoiceDetails invdetails);
+	
 }

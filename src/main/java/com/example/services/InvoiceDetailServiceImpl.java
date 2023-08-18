@@ -37,9 +37,8 @@ public class InvoiceDetailServiceImpl implements InvoiceDetailService{
 	}
 
 	@Override
-	public InvoiceDetails updateInvoiceDetails(Long id, InvoiceDetails invdetails) {
-		//return repository.updateInvoiceDetails(id,invdetails.getQuantity());
-		return null;
+	public InvoiceDetails updateQuantity(Long id,InvoiceDetails invdetails){
+		return repository.updateQuantity(id,invdetails.getQuantity());
 	}
 
 	@Override
@@ -52,6 +51,11 @@ public class InvoiceDetailServiceImpl implements InvoiceDetailService{
 	@Override
 	public void setInvoiceDetails(InvoiceDetails invdetails) {
 		repository.save(invdetails);
+	}
+
+	@Override
+	public InvoiceDetails updateTranType(Long id, InvoiceDetails inv) {
+		return repository.updateTranType(id,inv.getTranType());
 	}
 	
 	
