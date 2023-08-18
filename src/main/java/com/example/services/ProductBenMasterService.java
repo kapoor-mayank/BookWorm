@@ -11,4 +11,6 @@ public interface ProductBenMasterService {
 	List<ProductBenMaster> getByProdBenPercentage(double prodBenPercentage);
 	List<ProductBenMaster> getAllProduct();
      void addProduct(ProductBenMaster p) ;
+ 	public ProductBenMaster updateProduct(ProductBenMaster newproduct,Long id) ;
+     void delete(Long prodBenId);
 }

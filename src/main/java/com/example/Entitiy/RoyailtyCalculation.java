@@ -32,9 +32,9 @@ public class RoyailtyCalculation {
     
     private int qty;
     private String tranType;
-    private double salePrice;
-    private double basePrice;
-    private double royaltyOnBasePrice;
+    private Double salePrice;
+    private Double basePrice;
+    private Double royaltyOnBasePrice;
 	public Long getRoycalId() {
 		return roycalId;
 	}
@@ -77,22 +77,22 @@ public class RoyailtyCalculation {
 	public void setTranType(String tranType) {
 		this.tranType = tranType;
 	}
-	public double getSalePrice() {
+	public Double getSalePrice() {
 		return salePrice;
 	}
-	public void setSalePrice(double salePrice) {
+	public void setSalePrice(Double salePrice) {
 		this.salePrice = salePrice;
 	}
-	public double getBasePrice() {
+	public Double getBasePrice() {
 		return basePrice;
 	}
-	public void setBasePrice(double basePrice) {
+	public void setBasePrice(Double basePrice) {
 		this.basePrice = basePrice;
 	}
-	public double getRoyaltyOnBasePrice() {
+	public Double getRoyaltyOnBasePrice() {
 		return royaltyOnBasePrice;
 	}
-	public void setRoyaltyOnBasePrice(double royaltyOnBasePrice) {
+	public void setRoyaltyOnBasePrice(Double royaltyOnBasePrice) {
 		this.royaltyOnBasePrice = royaltyOnBasePrice;
 	}
     

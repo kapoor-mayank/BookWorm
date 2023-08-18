@@ -26,9 +26,9 @@ public class ProductMaster {
     @JoinColumn(name = "typeId")
     private ProductTypeMaster productType;
     
-    private double productBasePrice;
-    private double productSpCost;
-    private double productOfferPrice;
+    private Double productBasePrice;
+    private Double productSpCost;
+    private Double productOfferPrice;
     private Date productOffPriceExpiryDate;
     
     private String productDescriptionShort;
@@ -50,8 +50,8 @@ public class ProductMaster {
     
     private boolean isRentable;
     private boolean isLibrary;
-    private double rentPerDay;
-    private double minRentDays;
+    private Double rentPerDay;
+    private Double minRentDays;
 	public Long getProductId() {
 		return productId;
 	}
@@ -76,22 +76,22 @@ public class ProductMaster {
 	public void setProductType(ProductTypeMaster productType) {
 		this.productType = productType;
 	}
-	public double getProductBasePrice() {
+	public Double getProductBasePrice() {
 		return productBasePrice;
 	}
-	public void setProductBasePrice(double productBasePrice) {
+	public void setProductBasePrice(Double productBasePrice) {
 		this.productBasePrice = productBasePrice;
 	}
-	public double getProductSpCost() {
+	public Double getProductSpCost() {
 		return productSpCost;
 	}
-	public void setProductSpCost(double productSpCost) {
+	public void setProductSpCost(Double productSpCost) {
 		this.productSpCost = productSpCost;
 	}
-	public double getProductOfferPrice() {
+	public Double getProductOfferPrice() {
 		return productOfferPrice;
 	}
-	public void setProductOfferPrice(double productOfferPrice) {
+	public void setProductOfferPrice(Double productOfferPrice) {
 		this.productOfferPrice = productOfferPrice;
 	}
 	public Date getProductOffPriceExpiryDate() {
@@ -148,16 +148,16 @@ public class ProductMaster {
 	public void setLibrary(boolean isLibrary) {
 		this.isLibrary = isLibrary;
 	}
-	public double getRentPerDay() {
+	public Double getRentPerDay() {
 		return rentPerDay;
 	}
-	public void setRentPerDay(double rentPerDay) {
+	public void setRentPerDay(Double rentPerDay) {
 		this.rentPerDay = rentPerDay;
 	}
-	public double getMinRentDays() {
+	public Double getMinRentDays() {
 		return minRentDays;
 	}
-	public void setMinRentDays(double minRentDays) {
+	public void setMinRentDays(Double minRentDays) {
 		this.minRentDays = minRentDays;
 	}
 	public PublisherMaster getProductPublisher() {

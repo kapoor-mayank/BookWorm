@@ -22,7 +22,7 @@ public class InvoiceDetails {
     private ProductMaster product;
     
     private int quantity;
-    private double basePrice;
+    private Double basePrice;
     private String tranType;
     private int rentNoOfDays;
 	public Long getInvDtlId() {
@@ -49,10 +49,10 @@ public class InvoiceDetails {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public double getBasePrice() {
+	public Double getBasePrice() {
 		return basePrice;
 	}
-	public void setBasePrice(double basePrice) {
+	public void setBasePrice(Double basePrice) {
 		this.basePrice = basePrice;
 	}
 	public String getTranType() {

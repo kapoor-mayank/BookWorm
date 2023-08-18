@@ -19,19 +19,19 @@ public class ProductBenMasterServiceImpl implements ProductBenMasterService {
 	}
 	
 	public Optional<ProductBenMaster> getByProdBenId(Long prodBenId) {
-		// TODO Auto-generated method stub
+		
 		 return repository.findById(prodBenId);
 	}
 
 
 	@Override
 	public List<ProductBenMaster> getByProdBenPercentage(double prodBenPercentage) {
-		// TODO Auto-generated method stub
+		
 		return repository.findAll();
 	}
 
 	public List<ProductBenMaster> getAllProduct() {
-		// TODO Auto-generated method stub
+	
 		return repository.findAll();
 	}
 
@@ -39,6 +39,21 @@ public class ProductBenMasterServiceImpl implements ProductBenMasterService {
 	public void addProduct(ProductBenMaster p) {
 		repository.save(p);
 		
+	}
+
+	@Override
+	public void delete(Long prodBenId) {
+		repository.deleteById(prodBenId);
+		
+	}
+
+	@Override
+	public ProductBenMaster updateProduct(ProductBenMaster newproduct,Long id) {
+		ProductBenMaster oldproduct =repository.findById(id).orElse(null);
+		oldproduct.setBeneficiary(newproduct.getBeneficiary());
+		oldproduct.setProdBenPercentage(newproduct.getProdBenPercentage());
+		repository.save(oldproduct);
+		return oldproduct;
 	}
 
 }

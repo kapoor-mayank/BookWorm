@@ -21,7 +21,7 @@ public class ProductBenMaster {
     @JoinColumn(name = "prodBenProductId")
     private ProductMaster product;
     
-    private double prodBenPercentage;
+    private Double prodBenPercentage;
 
 	public Long getProdBenId() {
 		return prodBenId;
@@ -47,11 +47,11 @@ public class ProductBenMaster {
 		this.product = product;
 	}
 
-	public double getProdBenPercentage() {
+	public Double getProdBenPercentage() {
 		return prodBenPercentage;
 	}
 
-	public void setProdBenPercentage(double prodBenPercentage) {
+	public void setProdBenPercentage(Double prodBenPercentage) {
 		this.prodBenPercentage = prodBenPercentage;
 	}
     
