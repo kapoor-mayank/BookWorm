@@ -31,19 +31,19 @@ public class RoyaltyCalculationController {
 
     @GetMapping("/beneficiary/{benId}")
     public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByBeneficiary(@PathVariable long benId) {
-        List<RoyaltyCalculation> royalties = royaltyCalculationService.getRoyaltyByBeneficiary(benId);
+        List<RoyaltyCalculation> royalties = royaltyCalculationService.getByBeneficiary(benId);
         return ResponseEntity.ok(royalties);
     }
 
     @GetMapping("/product/{productId}")
-    public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByProduct(@PathVariable long productId) {
-        List<RoyaltyCalculation> royalties = royaltyCalculationService.getRoyaltyByProduct(productId);
+    public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByProduct(@PathVariable int productId) {
+        List<RoyaltyCalculation> royalties = royaltyCalculationService.getByProduct(productId);
         return ResponseEntity.ok(royalties);
     }
 
     @GetMapping("/invoice/{invoiceId}")
-    public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByInvoice(@PathVariable long invoiceId) {
-        List<RoyaltyCalculation> royalties = royaltyCalculationService.getRoyaltyByInvoice(invoiceId);
+    public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByInvoice(@PathVariable int invoiceId) {
+        List<RoyaltyCalculation> royalties = royaltyCalculationService.getByInvoice(invoiceId);
         return ResponseEntity.ok(royalties);
     }
     

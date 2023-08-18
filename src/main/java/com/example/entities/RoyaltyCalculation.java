@@ -2,8 +2,11 @@ package com.example.entities;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,22 +18,24 @@ public class RoyaltyCalculation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long roycalId;
+    private long roycalId;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "invoiceId")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private InvoiceTable invoice;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "benId")
     private BeneficiaryMaster beneficiary;
     
     private Date roycalTrandate;
     
-    public Long getRoycalId() {
+    public long getRoycalId() {
 		return roycalId;
 	}
-	public void setRoycalId(Long roycalId) {
+	public void setRoycalId(long roycalId) {
 		this.roycalId = roycalId;
 	}
 	public InvoiceTable getInvoice() {
@@ -88,6 +93,7 @@ public class RoyaltyCalculation {
 		this.royaltyOnBasePrice = royaltyOnBasePrice;
 	}
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "prodId")
     private ProductMaster product;
     

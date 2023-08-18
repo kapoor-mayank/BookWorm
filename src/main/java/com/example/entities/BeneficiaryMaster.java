@@ -11,17 +11,17 @@ public class BeneficiaryMaster {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long benId;
+    private long benId;
     
     private String benName;
     private String benEmailId;
     private String benContactNo;
     private String benBankName;
     private String benBankBranch;
-    public Long getBenId() {
+    public long getBenId() {
 		return benId;
 	}
-	public void setBenId(Long benId) {
+	public void setBenId(long benId) {
 		this.benId = benId;
 	}
 	public String getBenName() {

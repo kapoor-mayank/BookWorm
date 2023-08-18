@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.entities.BeneficiaryMaster;
+import com.example.entities.InvoiceTable;
+import com.example.entities.ProductMaster;
 import com.example.entities.RoyaltyCalculation;
 import com.example.repositories.RoyaltyCalculationRepository;
 
@@ -13,29 +16,29 @@ public class RoyaltyCalculationServiceImpl implements RoyaltyCalculationService{
 	
 	@Autowired
 	RoyaltyCalculationRepository repository;
+
 	@Override
 	public void addRoyalty(RoyaltyCalculation royalty) {
 		// TODO Auto-generated method stub
 		repository.save(royalty);
-		
 	}
 
 	@Override
-	public List<RoyaltyCalculation> getRoyaltyByBeneficiary(long benId) {
+	public List<RoyaltyCalculation> getByBeneficiary(long benId) {
 		// TODO Auto-generated method stub
-		return repository.getByBeneficiary(benId);
+		return repository.getByBeneficiaryId(benId);
 	}
 
 	@Override
-	public List<RoyaltyCalculation> getRoyaltyByProduct(long productId) {
+	public List<RoyaltyCalculation> getByProduct(long productId) {
 		// TODO Auto-generated method stub
-		return repository.getByProduct(productId);
+		return repository.getByProductId(productId);
 	}
 
 	@Override
-	public List<RoyaltyCalculation> getRoyaltyByInvoice(long invoiceId) {
+	public List<RoyaltyCalculation> getByInvoice(long invoiceId) {
 		// TODO Auto-generated method stub
-		return repository.getByInvoice(invoiceId);
+		return repository.getByInvoiceId(invoiceId);
 	}
 
 	@Override
@@ -43,5 +46,6 @@ public class RoyaltyCalculationServiceImpl implements RoyaltyCalculationService{
 		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
+	
 
 }
