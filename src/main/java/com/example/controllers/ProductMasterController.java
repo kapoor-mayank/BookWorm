@@ -23,7 +23,7 @@ import com.example.services.IProductMasterService;
 
 @RestController
 @RequestMapping("/api/products/")
-@CrossOrigin
+@CrossOrigin("*")
 public class ProductMasterController {
 	@Autowired
 	IProductMasterService proService;

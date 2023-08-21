@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/product-attributes")
+@CrossOrigin("*")
+@RequestMapping("/api/productAttribute")
 public class ProductAttributeController {
 
     private final ProductAttributeService productAttributeService;
@@ -21,13 +22,13 @@ public class ProductAttributeController {
         this.productAttributeService = productAttributeService;
     }
 
-    @GetMapping(value="/get")
+    @GetMapping("/get")
     public ResponseEntity<List<ProductAttribute>> getAllProductAttributes() {
         List<ProductAttribute> productAttributes = productAttributeService.getAllProductAttributes();
         return new ResponseEntity<>(productAttributes, HttpStatus.OK);
     }
 
-    @GetMapping(value="/getbyid/{id}")
+    @GetMapping("/getbyid/{id}")
     public ResponseEntity<ProductAttribute> getProductAttributeById(@PathVariable Long id) {
         Optional<ProductAttribute> productAttribute = productAttributeService.getProductAttributeById(id);
         if (productAttribute.isPresent()) {
@@ -36,14 +37,14 @@ public class ProductAttributeController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @PostMapping(value = "/add")
+    @PostMapping("/add")
     public ResponseEntity<ProductAttribute> createProductAttribute(@RequestBody ProductAttribute productAttribute) {
     	System.out.println("Mukund "+productAttribute);
         ProductAttribute createdAttribute = productAttributeService.createProductAttribute(productAttribute);
         return new ResponseEntity<>(createdAttribute, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/update/{id}")
+    @PutMapping("/update/{id}")
     public void updateProductAttribute(@PathVariable Long id, @RequestBody ProductAttribute updatedProductAttribute) {
     	productAttributeService.updateProductAttribute(id, updatedProductAttribute);
        

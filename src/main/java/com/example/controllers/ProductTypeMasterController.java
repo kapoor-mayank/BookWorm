@@ -19,7 +19,7 @@ import com.example.services.IProductTypeMaster;
 
 
 @RestController 
-@RequestMapping("/api/")
+@RequestMapping("/api/productType")
 @CrossOrigin("*")
 public class ProductTypeMasterController {
 	
@@ -30,25 +30,25 @@ public class ProductTypeMasterController {
 		IProductTypeMaster p;
 		
 		
-		 @GetMapping(value = "/allproductTypes")
+		 @GetMapping(value = "/getAll")
 		 public List<ProductTypeMaster> showAllProducts()
 		 {
 			  return p.getAllProducts(); 
 			
 		 }
 		
-		 @DeleteMapping(value = "/productType/{pid}")
+		 @DeleteMapping(value = "/delete/{pid}")
 		 public void deleteProduct(@PathVariable Long pid)
 		 {
 			p.delete(pid);
 		 }
-		 @PutMapping(value = "/productType/{pid}")
+		 @PutMapping(value = "/update/{pid}")
 		 public void updateProduct(@RequestBody ProductTypeMaster product,@PathVariable Long pid)
 		 {
 			System.out.println("inside updatepro of controller");
 			p.update(product, pid);
 		 }
-		 @PostMapping(value = "/productType")
+		 @PostMapping(value = "/add")
 		 public void addpro(@RequestBody ProductTypeMaster product)
 		 {
 			System.out.println("addpro called");

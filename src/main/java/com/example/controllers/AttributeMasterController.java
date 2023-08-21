@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entities.AttributeMaster;
@@ -18,17 +19,18 @@ import com.example.services.IAttributeMaster;
 
 @RestController
 @CrossOrigin("*")
+@RequestMapping("/api/attribute")
 public class AttributeMasterController {
     @Autowired
     IAttributeMaster attributeMaster;
 
-    @GetMapping("/allattributes")
+    @GetMapping("/getAll")
     public ResponseEntity<List<AttributeMaster>> showAllAttributes() {
         List<AttributeMaster> attributes = attributeMaster.getAllAttribute();
         return new ResponseEntity<>(attributes, HttpStatus.OK);
     }
 
-    @DeleteMapping("/attributes/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteAttribute(@PathVariable Long id) {
         try {
             attributeMaster.delete(id);
@@ -38,17 +40,17 @@ public class AttributeMasterController {
         }
     }
 
-    @PutMapping("/attributes/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Void> updateAttribute(@RequestBody AttributeMaster attribute, @PathVariable Long id) {
         try {
             attributeMaster.update(attribute, id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PostMapping("/attribute")
+    @PostMapping("/add")
     public ResponseEntity<Void> addAttribute(@RequestBody AttributeMaster attribute) {
         try {
             attributeMaster.addAttribute(attribute);
