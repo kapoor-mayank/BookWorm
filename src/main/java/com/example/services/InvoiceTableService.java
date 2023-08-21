@@ -1,27 +1,27 @@
 package com.example.services;
 
-import java.sql.Date;
-import java.util.List;
-import java.util.Optional;
-
+import org.springframework.http.ResponseEntity;
 import com.example.entities.CustomerMaster;
 import com.example.entities.InvoiceTable;
 
+import java.sql.Date;
+import java.util.List;
+
 public interface InvoiceTableService {
 
-	Optional<InvoiceTable> getInvoiceById(Long invoiceId);
+    ResponseEntity<InvoiceTable> getInvoiceById(Long invoiceId);
 
-	void deleteByInvoiceId(Long id);
+    ResponseEntity<Void> deleteByInvoiceId(Long id);
 
-	void addInvoice(InvoiceTable invoice);
+    ResponseEntity<Void> addInvoice(InvoiceTable invoice);
 
-	List<InvoiceTable> getByCustomerId(CustomerMaster customerId);
+    ResponseEntity<List<InvoiceTable>> getByCustomerId(CustomerMaster customerId);
 
-	void deleteByCustomerId(CustomerMaster custId);
+    ResponseEntity<Void> deleteByCustomerId(CustomerMaster custId);
 
-	List<InvoiceTable> getByInvoiceAmount(Double customerId);
+    ResponseEntity<List<InvoiceTable>> getByInvoiceAmount(Double amount);
 
-	List<InvoiceTable> getInvoiceByDate(Date date);
+    ResponseEntity<List<InvoiceTable>> getInvoiceByDate(Date date);
 
-	void deleteByInvoiceDate(Date date);
+    ResponseEntity<Void> deleteByInvoiceDate(Date date);
 }
