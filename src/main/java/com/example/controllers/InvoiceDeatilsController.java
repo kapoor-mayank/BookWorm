@@ -56,11 +56,11 @@ public class InvoiceDeatilsController {
 		Optional<InvoiceDetails> InvDtl = service.deleteInvoiceDetailsById(id);
 		return InvDtl;
 	}
-	@PutMapping("/api/updateQuantity")
+	@PutMapping("/api/updateQuantity/{Id}")
 	public InvoiceDetails updateQuantity(@PathVariable Long Id,@RequestBody InvoiceDetails inv) {
 		return service.updateQuantity(Id, inv);
 	}
-	@PutMapping("/api/updateTranType")
+	@PutMapping("/api/updateTranType/{Id}")
 	public InvoiceDetails updateTranType(@PathVariable Long Id,@RequestBody InvoiceDetails inv) {
 		return service.updateTranType(Id, inv);
 	}
