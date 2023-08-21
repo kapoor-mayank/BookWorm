@@ -58,4 +58,9 @@ public class ProductMasterServiceImpl implements IProductMasterService {
 		return productMasterRepo.findAll();
 	}
 
+//	@Override
+//	public void updateById(ProductMaster product, long id) {
+//		productMasterRepo.updateById(product, id);
+//	}
+
 }

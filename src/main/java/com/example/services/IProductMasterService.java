@@ -16,5 +16,7 @@ public interface IProductMasterService {
 	public Optional<ProductMaster> deleteById(long id) throws ProductNotExistException;
 
 	public Optional<ProductMaster> updateById(long id, ProductMaster obj);
+	
+	//public void updateById(ProductMaster product,long id);
 
 }
