@@ -18,7 +18,7 @@ public class MyShelf {
     
     @ManyToOne
     @JoinColumn(name = "customerId")
-    private CustomerMaster customerId;
+  private CustomerMaster customerId;
    
     @ManyToOne
     @JoinColumn(name = "productId")
@@ -27,41 +27,6 @@ public class MyShelf {
     private String tranType;
     private Date productExpiryDate;
     private boolean isActive;
-	public Long getShelfId() {
-		return shelfId;
-	}
-	public void setShelfId(Long shelfId) {
-		this.shelfId = shelfId;
-	}
-	public ProductMaster getProduct() {
-		return product;
-	}
-	public void setProduct(ProductMaster product) {
-		this.product = product;
-	}
-	public String getTranType() {
-		return tranType;
-	}
-	public void setTranType(String tranType) {
-		this.tranType = tranType;
-	}
-	public Date getProductExpiryDate() {
-		return productExpiryDate;
-	}
-	public void setProductExpiryDate(Date productExpiryDate) {
-		this.productExpiryDate = productExpiryDate;
-	}
-	public boolean isActive() {
-		return isActive;
-	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-	
-	public CustomerMaster getCustomerId() {
-		return customerId;
-	}
-	public void setCustomerId(CustomerMaster customerId) {
-		this.customerId = customerId;
-	}
+    
+    // Getter and setter methods
 }

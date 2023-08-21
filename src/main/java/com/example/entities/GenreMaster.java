@@ -17,7 +17,7 @@ public class GenreMaster {
 	private String genreDesc;
 
 	@ManyToOne
-	@JoinColumn(name = "languageId")
+	@JoinColumn(name = "languageId") 
 	private LanguageMaster language;
 
 	public Long getGenreId() {
