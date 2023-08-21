@@ -14,8 +14,12 @@ public class BeneficiaryMasterImpl implements IBenficiaryMaster {
 	
 	
 	@Autowired
-	 private  BeneficiaryMasterRepository repository;
+	 private  final BeneficiaryMasterRepository repository;
 	
+	public BeneficiaryMasterImpl(BeneficiaryMasterRepository repository) {
+		// TODO Auto-generated constructor stub
+		this.repository=repository;
+	}
 	
 
 	@Override
@@ -31,22 +35,22 @@ public class BeneficiaryMasterImpl implements IBenficiaryMaster {
 	}
 
 	@Override
-	public void deleteById(long id) {
+	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
 		repository.deleteById(id);
 	}
 
 	@Override
-	public Optional<BeneficiaryMaster> getBen(long id) {
+	public Optional<BeneficiaryMaster> getBen(Long id) {
 		// TODO Auto-generated method stub
 		return repository.findById(id);
 	}
 
-//	@Override
-//	public void update(long id, BeneficiaryMaster b) {
-//		// TODO Auto-generated method stub
-//		repository.update(b.getBenName(),id);
-//	}
+	@Override
+	public void update(Long id, BeneficiaryMaster b) {
+		// TODO Auto-generated method stub
+		repository.update(b.getBenName(),id);
+	}
 	
 	
 

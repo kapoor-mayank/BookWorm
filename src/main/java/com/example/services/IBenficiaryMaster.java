@@ -9,9 +9,9 @@ public interface IBenficiaryMaster
 {
 	void addBeneficiary(BeneficiaryMaster b);
 	List<BeneficiaryMaster> getAllBen();
-	void deleteById(long id);
-	Optional<BeneficiaryMaster> getBen(long id);
-//	void update(long id, BeneficiaryMaster updatedBeneficiary);
+	void deleteById(Long id);
+	Optional<BeneficiaryMaster> getBen(Long id);
+	void update(Long id, BeneficiaryMaster updatedBeneficiary);
 
 }
 

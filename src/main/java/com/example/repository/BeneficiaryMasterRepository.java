@@ -14,9 +14,9 @@ import com.example.entities.BeneficiaryMaster;
 public interface BeneficiaryMasterRepository extends JpaRepository<BeneficiaryMaster, Long> {
 
 	
-//	@Modifying
-//	@Query("UPDATE Beneficary b SET b.benName = :name WHERE b.benId = :id")
-//	void update(@Param("name") String name, @Param("id") long id);
+	@Modifying
+	@Query("UPDATE BeneficiaryMaster b SET b.benName = :name WHERE b.benId = :id")
+	void update(@Param("name") String ben_name, @Param("id") Long ben_id);
 
 	
 }
