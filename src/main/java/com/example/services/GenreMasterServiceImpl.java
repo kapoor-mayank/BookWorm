@@ -46,6 +46,7 @@ public class GenreMasterServiceImpl implements GenreMasterService {
 		return repository.findById(id);
 	}
 
+<<<<<<< HEAD
 	@Override
     public Optional<GenreMaster> getGenreMasterBygenreDesc(String name) {
 		// TODO Auto-generated method stub
@@ -62,3 +63,15 @@ public class GenreMasterServiceImpl implements GenreMasterService {
 	
 
 
+=======
+	//@Override
+//	public Optional<GenreMaster> findGenreMasterByName(String name) {
+//		// TODO Auto-generated method stub
+//		return repository.findByName(name);
+//	}
+
+	
+	
+
+}
+>>>>>>> a0a538e2648ce6abccac512e89d9b7e81da00c7f
