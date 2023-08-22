@@ -2,7 +2,6 @@ package com.example.entities;
 
 import java.sql.Date;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +20,7 @@ public class ProductMaster {
 	private String productName;
 	private String productEnglishName;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "typeId")
 	private ProductTypeMaster productType;
 
@@ -35,21 +34,22 @@ public class ProductMaster {
 	private String productISBN;
 	private String productAuthor;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "productPublisher")
 	private PublisherMaster productPublisher;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "productLang")
 	private LanguageMaster productLang;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "productGenre")
 	private GenreMaster productGenre;
 
 	private boolean isRentable;
 	private boolean isLibrary;
 	private double rentPerDay;
+	private double minRentDays;
 	public Long getProductId() {
 		return productId;
 	}
@@ -164,6 +164,6 @@ public class ProductMaster {
 	public void setMinRentDays(double minRentDays) {
 		this.minRentDays = minRentDays;
 	}
-	private double minRentDays;
-
+	
+	
 }

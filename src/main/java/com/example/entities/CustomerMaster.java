@@ -10,15 +10,17 @@ import jakarta.persistence.Id;
 @Entity
 public class CustomerMaster {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long customerId;
-
-	private String customerName;
-	private String customerEmail;
-	private String password;
-	private boolean isPremium;
-	private Date premiumDate;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long customerId;
+    
+    private String customerName;
+    private String customerEmail;
+    private String password;
+    private boolean isPremium;
+    private Date premiumDate;
+    private String customerContactNo;
+    // Other customer attributes
 	public Long getCustomerId() {
 		return customerId;
 	}
@@ -61,6 +63,7 @@ public class CustomerMaster {
 	public void setCustomerContactNo(String customerContactNo) {
 		this.customerContactNo = customerContactNo;
 	}
-	private String customerContactNo;
-
+    
+    // Getter and setter methods
+    
 }

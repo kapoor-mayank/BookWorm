@@ -1,7 +1,7 @@
 package com.example.entities;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,11 +11,15 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class LanguageMaster {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long languageId;
-
-	private String languageDesc;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long languageId;
+    
+    private String languageDesc;
+    
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "typeId")
+    private ProductTypeMaster productType;
 
 	public Long getLanguageId() {
 		return languageId;
@@ -40,10 +44,7 @@ public class LanguageMaster {
 	public void setProductType(ProductTypeMaster productType) {
 		this.productType = productType;
 	}
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "typeId")
-	private ProductTypeMaster productType;
-
-	// Getter and setter methods
+    
+    // Getter and setter methods
+    
 }

@@ -1,6 +1,5 @@
 package com.example.entities;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,19 +10,19 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class ProductAttribute {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long prodAttId;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "attributeId")
-	private AttributeMaster attribute;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "productId")
-	private ProductMaster product;
-
-	private String attributeValue;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long prodAttId;
+    
+    @ManyToOne
+    @JoinColumn(name = "attributeId")
+    private AttributeMaster attribute;
+    
+    @ManyToOne
+    @JoinColumn(name = "productId")
+    private ProductMaster product;
+    
+    private String attributeValue;
 
 	public Long getProdAttId() {
 		return prodAttId;
@@ -56,5 +55,5 @@ public class ProductAttribute {
 	public void setAttributeValue(String attributeValue) {
 		this.attributeValue = attributeValue;
 	}
-
+    
 }

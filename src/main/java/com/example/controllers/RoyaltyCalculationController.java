@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import com.example.entities.RoyaltyCalculation;
 import com.example.services.RoyaltyCalculationService;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/royalty")
 public class RoyaltyCalculationController {
     
@@ -31,19 +33,19 @@ public class RoyaltyCalculationController {
 
     @GetMapping("/beneficiary/{benId}")
     public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByBeneficiary(@PathVariable long benId) {
-        List<RoyaltyCalculation> royalties = royaltyCalculationService.getRoyaltyByBeneficiary(benId);
+        List<RoyaltyCalculation> royalties = royaltyCalculationService.getByBeneficiary(benId);
         return ResponseEntity.ok(royalties);
     }
 
     @GetMapping("/product/{productId}")
-    public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByProduct(@PathVariable long productId) {
-        List<RoyaltyCalculation> royalties = royaltyCalculationService.getRoyaltyByProduct(productId);
+    public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByProduct(@PathVariable int productId) {
+        List<RoyaltyCalculation> royalties = royaltyCalculationService.getByProduct(productId);
         return ResponseEntity.ok(royalties);
     }
 
     @GetMapping("/invoice/{invoiceId}")
-    public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByInvoice(@PathVariable long invoiceId) {
-        List<RoyaltyCalculation> royalties = royaltyCalculationService.getRoyaltyByInvoice(invoiceId);
+    public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByInvoice(@PathVariable int invoiceId) {
+        List<RoyaltyCalculation> royalties = royaltyCalculationService.getByInvoice(invoiceId);
         return ResponseEntity.ok(royalties);
     }
     

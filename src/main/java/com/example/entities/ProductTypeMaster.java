@@ -8,11 +8,11 @@ import jakarta.persistence.Id;
 @Entity
 public class ProductTypeMaster {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long typeId;
-
-	private String typeDesc;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long typeId;
+    
+    private String typeDesc;
 
 	public Long getTypeId() {
 		return typeId;
@@ -29,5 +29,4 @@ public class ProductTypeMaster {
 	public void setTypeDesc(String typeDesc) {
 		this.typeDesc = typeDesc;
 	}
-
 }

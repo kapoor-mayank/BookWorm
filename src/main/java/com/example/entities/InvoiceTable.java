@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,16 +14,16 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class InvoiceTable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long invoiceId;
-
-	private Date invoiceDate;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "custId")
-	private CustomerMaster customerId;
-	private Double invoiceAmount;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long invoiceId;
+    
+    private Date invoiceDate;
+    
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "custId")
+    private CustomerMaster customerId;
+    private double invoiceAmount;
 
 	public Long getInvoiceId() {
 		return invoiceId;
@@ -48,7 +49,7 @@ public class InvoiceTable {
 		this.invoiceDate = invoiceDate;
 	}
 
-	public Double getInvoiceAmount() {
+	public double getInvoiceAmount() {
 		return invoiceAmount;
 	}
 
@@ -56,10 +57,7 @@ public class InvoiceTable {
 		this.invoiceAmount = invoiceAmount;
 	}
 
-	@Override
-	public String toString() {
-		return "InvoiceTable [invoiceId=" + invoiceId + ", invoiceDate=" + invoiceDate + ", customerId=" + customerId
-				+ ", invoiceAmount=" + invoiceAmount + "]";
-	}
+	
+	
 
 }

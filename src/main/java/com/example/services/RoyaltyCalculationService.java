@@ -4,8 +4,8 @@ import java.util.List;
 import com.example.entities.*;
 public interface RoyaltyCalculationService {
 	void addRoyalty(RoyaltyCalculation royalty);
-	List<RoyaltyCalculation> getRoyaltyByBeneficiary(long benId);
-	List<RoyaltyCalculation> getRoyaltyByProduct(long productId);
-	List<RoyaltyCalculation> getRoyaltyByInvoice(long invoiceId);
+	List<RoyaltyCalculation> getByBeneficiary(long benId);
+	List<RoyaltyCalculation> getByProduct(long productId);
+	List<RoyaltyCalculation> getByInvoice(long invoiceId);
 	List<RoyaltyCalculation> getRoyalties();
 }

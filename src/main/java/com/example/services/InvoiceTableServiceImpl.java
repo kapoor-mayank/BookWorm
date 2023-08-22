@@ -1,72 +1,61 @@
 package com.example.services;
 
-import org.springframework.http.ResponseEntity;
-import com.example.entities.CustomerMaster;
-import com.example.entities.InvoiceTable;
-import com.example.repositories.InvoiceTableRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.entities.CustomerMaster;
+import com.example.entities.InvoiceTable;
+import com.example.repositories.InvoiceTableRepository;
+
 @Service
 public class InvoiceTableServiceImpl implements InvoiceTableService {
 
-    @Autowired
-    InvoiceTableRepository repo;
+	@Autowired
+	InvoiceTableRepository repo;
 
-    @Override
-    public ResponseEntity<InvoiceTable> getInvoiceById(Long invoiceId) {
-        Optional<InvoiceTable> invoiceOptional = repo.getByInvoiceId(invoiceId);
+	@Override
+	public Optional<InvoiceTable> getInvoiceById(Long invoiceId) {
+		return repo.getByInvoiceId(invoiceId);
+	}
 
-        if (invoiceOptional.isPresent()) {
-            return ResponseEntity.ok(invoiceOptional.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+	@Override
+	public void deleteByInvoiceId(Long id) {
+		repo.deleteByInvoiceId(id);
+	}
 
-    @Override
-    public ResponseEntity<Void> deleteByInvoiceId(Long id) {
-        repo.deleteByInvoiceId(id);
-        return ResponseEntity.noContent().build();
-    }
+	@Override
+	public void addInvoice(InvoiceTable invoice) {
+		repo.save(invoice);
+	}
 
-    @Override
-    public ResponseEntity<Void> addInvoice(InvoiceTable invoice) {
-        repo.save(invoice);
-        return ResponseEntity.ok().build();
-    }
+	@Override
+	public List<InvoiceTable> getByCustomerId(CustomerMaster customerId) {
+		return repo.getByCustomerId(customerId);
+	}
 
-    @Override
-    public ResponseEntity<List<InvoiceTable>> getByCustomerId(CustomerMaster customerId) {
-        List<InvoiceTable> invoices = repo.getByCustomerId(customerId);
-        return ResponseEntity.ok(invoices);
-    }
+	@Override
+	public void deleteByCustomerId(CustomerMaster custId) {
 
-    @Override
-    public ResponseEntity<Void> deleteByCustomerId(CustomerMaster custId) {
-        repo.deleteByCustomerId(custId);
-        return ResponseEntity.noContent().build();
-    }
+		repo.deleteByCustomerId(custId);
+	}
 
-    @Override
-    public ResponseEntity<List<InvoiceTable>> getByInvoiceAmount(Double amount) {
-        List<InvoiceTable> invoices = repo.getByInvoiceAmount(amount);
-        return ResponseEntity.ok(invoices);
-    }
+	@Override
+	public List<InvoiceTable> getByInvoiceAmount(Double amount) {
+		return repo.getByInvoiceAmount(amount);
+	}
 
-    @Override
-    public ResponseEntity<List<InvoiceTable>> getInvoiceByDate(Date date) {
-        List<InvoiceTable> invoices = repo.getByInvoiceDate(date);
-        return ResponseEntity.ok(invoices);
-    }
+	@Override
+	public List<InvoiceTable> getInvoiceByDate(Date date) {
+		return repo.getByInvoiceDate(date);
+	}
 
-    @Override
-    public ResponseEntity<Void> deleteByInvoiceDate(Date date) {
-        repo.deleteByInvoiceDate(date);
-        return ResponseEntity.noContent().build();
-    }
+	@Override
+	public void deleteByInvoiceDate(Date date) {
+		repo.deleteByInvoiceDate(date);
+	}
+
 }

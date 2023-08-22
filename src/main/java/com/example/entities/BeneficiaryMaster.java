@@ -9,20 +9,19 @@ import jakarta.persistence.Id;
 @Entity
 public class BeneficiaryMaster {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long benId;
-
-	private String benName;
-	private String benEmailId;
-	private String benContactNo;
-	private String benBankName;
-	private String benBankBranch;
-	private String benIFSC;
-	public Long getBenId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long benId;
+    
+    private String benName;
+    private String benEmailId;
+    private String benContactNo;
+    private String benBankName;
+    private String benBankBranch;
+    public long getBenId() {
 		return benId;
 	}
-	public void setBenId(Long benId) {
+	public void setBenId(long benId) {
 		this.benId = benId;
 	}
 	public String getBenName() {
@@ -79,9 +78,10 @@ public class BeneficiaryMaster {
 	public void setBenPAN(String benPAN) {
 		this.benPAN = benPAN;
 	}
-	private String benAccNo;
-	private String benAccType;
-	private String benPAN;
-
-	// Getter and setter methods
+	private String benIFSC;
+    private String benAccNo;
+    private String benAccType;
+    private String benPAN;
+    
+    // Getter and setter methods
 }
