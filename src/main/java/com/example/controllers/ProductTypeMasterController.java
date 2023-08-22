@@ -54,6 +54,11 @@ public class ProductTypeMasterController {
 			System.out.println("addpro called");
 			p.addProductType(product);
 		 }
+		 
+		 @GetMapping("/getByType/{type}")
+		 public void getByType(@PathVariable String type) {
+			 p.getByType(type);
+		 }
 	
 
 }

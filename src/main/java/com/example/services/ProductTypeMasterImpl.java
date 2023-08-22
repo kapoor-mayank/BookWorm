@@ -1,10 +1,12 @@
 package com.example.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.entities.ProductMaster;
 import com.example.entities.ProductTypeMaster;
 import com.example.repositories.ProductTypeMasterRepository;
 
@@ -38,4 +40,7 @@ public class ProductTypeMasterImpl implements IProductTypeMaster {
 		repository.update(p.getTypeDesc(), id);
 	}
 
+	public Optional<ProductTypeMaster> getByType(String type) {
+		return repository.findByTypeDesc(type);
+	}
 }

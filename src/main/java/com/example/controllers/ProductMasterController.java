@@ -93,5 +93,10 @@ public class ProductMasterController {
 		return new ResponseEntity<List<ProductMaster>>(products, HttpStatus.BAD_REQUEST);
 
 	}
+	
+	@GetMapping("/getByType/{id}")
+	public List<ProductMaster> getByType(@PathVariable int id) {
+		return proService.getByType(id);
+	}
 
 }

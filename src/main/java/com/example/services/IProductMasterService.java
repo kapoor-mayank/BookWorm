@@ -18,5 +18,7 @@ public interface IProductMasterService {
 	public Optional<ProductMaster> updateById(long id, ProductMaster obj);
 	
 	//public void updateById(ProductMaster product,long id);
+	
+	List<ProductMaster> getByType(long id);
 
 }
