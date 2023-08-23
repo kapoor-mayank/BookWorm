@@ -18,7 +18,7 @@ public class LanguageMaster {
     private String languageDesc;
     
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "typeId")
+    @JoinColumn(name = "typeId", unique = false)
     private ProductTypeMaster productType;
 
 	public Long getLanguageId() {

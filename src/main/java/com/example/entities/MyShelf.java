@@ -17,11 +17,11 @@ public class MyShelf {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shelfId;
     
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "customerId")
     private CustomerMaster customerId;
    
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "productId")
     private ProductMaster product;
     
