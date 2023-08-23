@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class ProductAttribute {
@@ -14,11 +16,11 @@ public class ProductAttribute {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long prodAttId;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "attributeId")
     private AttributeMaster attribute;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "productId")
     private ProductMaster product;
     

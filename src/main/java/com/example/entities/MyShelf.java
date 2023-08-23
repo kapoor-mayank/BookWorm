@@ -1,6 +1,7 @@
 package com.example.entities;
 
 import java.sql.Date;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class MyShelf {
@@ -16,7 +19,7 @@ public class MyShelf {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shelfId;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "customerId")
     private CustomerMaster customerId;
    

@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class ProductBenMaster {
@@ -18,7 +20,7 @@ public class ProductBenMaster {
     @JoinColumn(name = "prodBenBenId")
     private BeneficiaryMaster beneficiary;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "prodBenProductId")
     private ProductMaster product;
     

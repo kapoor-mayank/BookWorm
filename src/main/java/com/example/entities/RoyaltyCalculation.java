@@ -1,6 +1,8 @@
 package com.example.entities;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -12,6 +14,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class RoyaltyCalculation {
@@ -21,13 +25,11 @@ public class RoyaltyCalculation {
     private long roycalId;
     
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "invoiceId")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JoinColumn(name = "royalty_id")
     private InvoiceTable invoice;
     
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "benId")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ben_id")
     private BeneficiaryMaster beneficiary;
     
     private Date roycalTrandate;
@@ -38,11 +40,19 @@ public class RoyaltyCalculation {
 	public void setRoycalId(long roycalId) {
 		this.roycalId = roycalId;
 	}
+	
+	
 	public InvoiceTable getInvoice() {
 		return invoice;
 	}
 	public void setInvoice(InvoiceTable invoice) {
 		this.invoice = invoice;
+	}
+	public ProductMaster getProduct() {
+		return product;
+	}
+	public void setProduct(ProductMaster product) {
+		this.product = product;
 	}
 	public BeneficiaryMaster getBeneficiary() {
 		return beneficiary;
@@ -56,12 +66,8 @@ public class RoyaltyCalculation {
 	public void setRoycalTrandate(Date roycalTrandate) {
 		this.roycalTrandate = roycalTrandate;
 	}
-	public ProductMaster getProduct() {
-		return product;
-	}
-	public void setProduct(ProductMaster product) {
-		this.product = product;
-	}
+	
+	
 	public int getQty() {
 		return qty;
 	}
@@ -93,8 +99,7 @@ public class RoyaltyCalculation {
 		this.royaltyOnBasePrice = royaltyOnBasePrice;
 	}
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "prodId")
+    @JoinColumn(name = "productId")
     private ProductMaster product;
     
     @Override
