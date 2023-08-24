@@ -11,7 +11,7 @@ public interface IProductMasterService {
 
 	public List<ProductMaster> getAllProducts();
 	
-	public Optional<ProductMaster> getProduct(long id) throws ProductNotExistException;
+	public ProductMaster getProduct(long id) ;
 
 	public Optional<ProductMaster> deleteById(long id) throws ProductNotExistException;
 

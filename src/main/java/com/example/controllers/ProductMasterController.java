@@ -42,16 +42,16 @@ public class ProductMasterController {
 	}
 
 	@GetMapping("/getProduct/{id}")
-	public ResponseEntity<Optional<ProductMaster>> getProduct(@PathVariable long id) {
-		Optional<ProductMaster> obj = null;
+	public ResponseEntity<ProductMaster> getProduct(@PathVariable long id) {
+		ProductMaster obj = null;
 
 		try {
 			obj = proService.getProduct(id);
-			return new ResponseEntity<Optional<ProductMaster>>(obj, HttpStatus.OK);
+			return new ResponseEntity<ProductMaster>(obj, HttpStatus.OK);
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		return new ResponseEntity<Optional<ProductMaster>>(obj, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ProductMaster>(obj, HttpStatus.BAD_REQUEST);
 
 	}
 

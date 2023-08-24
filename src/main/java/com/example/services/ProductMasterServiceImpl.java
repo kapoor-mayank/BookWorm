@@ -25,11 +25,9 @@ public class ProductMasterServiceImpl implements IProductMasterService {
 	}
 
 	@Override
-	public Optional<ProductMaster> getProduct(long id) throws ProductNotExistException {
-		Optional<ProductMaster> obj = productMasterRepo.findById(id);
-		if (!obj.isPresent()) {
-			throw new ProductNotExistException("product is invalid " + id);
-		}
+	public ProductMaster getProduct(long id)  {
+		ProductMaster obj = productMasterRepo.getById(id);
+	
 		return obj;
 
 	}
