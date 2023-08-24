@@ -19,7 +19,13 @@ public class ProductMaster {
 
 	private String productName;
 	private String productEnglishName;
-
+	private String imagePath;
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 	@OneToOne
 	@JoinColumn(name = "typeId")
 	private ProductTypeMaster productType;
