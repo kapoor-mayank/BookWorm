@@ -1,5 +1,7 @@
 package com.example.controllers;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.dtos.ProductDto;
 import com.example.entities.ProductMaster;
 import com.example.exceptions.ProductNotExistException;
 import com.example.services.IProductMasterService;
@@ -95,8 +98,24 @@ public class ProductMasterController {
 	}
 	
 	@GetMapping("/getByType/{id}")
-	public List<ProductMaster> getByType(@PathVariable int id) {
-		return proService.getByType(id);
+	public List<ProductDto> getByType(@PathVariable int id) {
+		System.out.println("hhhhhhhhhhhhh");
+		List<ProductMaster> list = proService.getByType(id);
+		List<ProductDto> sendList = new ArrayList<>();
+		for (ProductMaster obj : list) {
+			ProductDto newObje = new ProductDto();
+			newObje.setId(obj.getProductId());
+			newObje.setLibrary(obj.isLibrary());
+			newObje.setMinRentDays(obj.getMinRentDays());
+			newObje.setPrice(obj.getProductSpCost());
+			newObje.setProductName(obj.getProductName());
+			newObje.setRentable(obj.isRentable());
+			newObje.setRentPerDay(obj.getRentPerDay());
+			sendList.add(newObje);
+			
+		}
+		System.out.println(list);
+		return sendList;
 	}
 
 }
