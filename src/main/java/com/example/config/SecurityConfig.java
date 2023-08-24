@@ -15,8 +15,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
+
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+
 
 import com.example.security.JwtAuthenticationEntryPoint;
 import com.example.security.JwtAuthenticationFilter;
@@ -74,6 +76,7 @@ public class SecurityConfig {
         .and()
         .exceptionHandling(ex -> ex.authenticationEntryPoint(point)) // Exception handling
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
 
     http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
     return http.build(); // Build and return the SecurityFilterChain
