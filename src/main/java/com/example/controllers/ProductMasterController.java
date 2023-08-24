@@ -22,7 +22,7 @@ import com.example.exceptions.ProductNotExistException;
 import com.example.services.IProductMasterService;
 
 @RestController
-@RequestMapping("/api/products/")
+@RequestMapping("/api/products")
 @CrossOrigin("*")
 public class ProductMasterController {
 	@Autowired
