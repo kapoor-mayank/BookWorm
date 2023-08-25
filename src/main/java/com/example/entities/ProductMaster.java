@@ -38,6 +38,7 @@ public class ProductMaster {
 	private String productDescriptionShort;
 	private String productDescriptionLong;
 	private String productISBN;
+	
 	private String productAuthor;
 
 	@ManyToOne
@@ -170,6 +171,16 @@ public class ProductMaster {
 	public void setMinRentDays(double minRentDays) {
 		this.minRentDays = minRentDays;
 	}
+	@Override
+	public String toString() {
+		return "ProductMaster [productId=" + productId + ", productName=" + productName + ", productEnglishName="
+				+ productEnglishName + ", productType=" + productType + ", productGenre=" + productGenre
+				+ ", isRentable=" + isRentable + ", isLibrary=" + isLibrary + ", rentPerDay=" + rentPerDay
+				+ ", minRentDays=" + minRentDays + "]";
+	}
+	
+	
+	
 	
 	
 }
