@@ -66,7 +66,7 @@ public class SecurityConfig {
         .cors().and() // Enable CORS
         .authorizeRequests(authorizeRequests ->
             authorizeRequests
-                .requestMatchers(HttpMethod.POST, "/auth/login").permitAll() // Allow login
+                .requestMatchers(HttpMethod.POST, "/auth/login", "/api/customer/add", "/api/products/getProducts", "/api/products/getByType/{id}").permitAll() // Allow login
                 .requestMatchers("/test").authenticated() // Protect "/test"
         )
         .authorizeRequests()
