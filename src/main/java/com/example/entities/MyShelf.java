@@ -1,8 +1,10 @@
 package com.example.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,17 +21,18 @@ public class MyShelf {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shelfId;
     
-    @OneToOne
-    @JoinColumn(name = "customerId")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customerId" )
     private CustomerMaster customerId;
    
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "productId")
     private ProductMaster product;
     
     private String tranType;
-    private Date productExpiryDate;
+    private LocalDate  productExpiryDate;
     private boolean isActive;
+    
 	public Long getShelfId() {
 		return shelfId;
 	}
@@ -48,11 +51,11 @@ public class MyShelf {
 	public void setTranType(String tranType) {
 		this.tranType = tranType;
 	}
-	public Date getProductExpiryDate() {
+	public LocalDate getProductExpiryDate() {
 		return productExpiryDate;
 	}
-	public void setProductExpiryDate(Date productExpiryDate) {
-		this.productExpiryDate = productExpiryDate;
+	public void setProductExpiryDate(LocalDate localDate) {
+		this.productExpiryDate = localDate;
 	}
 	public boolean isActive() {
 		return isActive;
@@ -67,4 +70,12 @@ public class MyShelf {
 	public void setCustomerId(CustomerMaster customerId) {
 		this.customerId = customerId;
 	}
+	@Override
+	public String toString() {
+		return "MyShelf [shelfId=" + shelfId + ", customerId=" + customerId + ", product=" + product + ", tranType="
+				+ tranType + ", productExpiryDate=" + productExpiryDate + ", isActive=" + isActive + "]";
+	}
+	
+	
+	
 }

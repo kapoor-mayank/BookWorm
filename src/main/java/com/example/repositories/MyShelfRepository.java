@@ -13,8 +13,8 @@ import com.example.entities.ProductMaster;
 @Repository
 public interface MyShelfRepository extends JpaRepository<MyShelf, Long> {
 
-	@Query(value = "SELECT * FROM product_master p JOIN my_shelf m ON p.product_id = m.product_id WHERE m.customer_id = :id", nativeQuery = true)
+	@Query(value = "SELECT * FROM my_shelf WHERE customer_id = :id", nativeQuery = true)
 
-	List<Object[]> getByCustomerId(@Param("id") Long customerId);
+	List<MyShelf> getByCustomerId(@Param("id") Long customerId);
 
 }

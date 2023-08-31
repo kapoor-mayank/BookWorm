@@ -14,17 +14,29 @@ import com.example.repositories.MyShelfRepository;
 public class MyShelfServiceImpl implements MyShelfService {
 
 	@Autowired
-	MyShelfRepository repository;
+	MyShelfRepository myShelfRepo;
 
 	@Override
 	public MyShelf getById(Long shelfId) {
-		Optional<MyShelf> shelfOptional = repository.findById(shelfId);
+		Optional<MyShelf> shelfOptional = myShelfRepo.findById(shelfId);
 		return shelfOptional.orElse(null);
 	}
 
+
+
 	@Override
-	public List<Object []> getByCustomerId(Long customerId) {
-		return repository.getByCustomerId(customerId);
+	public MyShelf addToShelf(MyShelf shelf) {
+		MyShelf obj =  myShelfRepo.save(shelf);
+		return obj;
+	}
+
+
+
+	@Override
+	public List<MyShelf> getByCustomerId(long id) {
+	    List<MyShelf> list =  myShelfRepo.getByCustomerId(id);
+	    System.out.println("In service "+list);
+		return list;
 	}
 
 }
