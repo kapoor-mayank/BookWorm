@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.entities.JwtRequest;
 import com.example.entities.JwtResponse;
 import com.example.security.JwtHelper;
+import com.example.services.CustomerService;
 
 @RestController
 @CrossOrigin("*")
@@ -32,7 +33,9 @@ public class AuthController {
     @Autowired
     private AuthenticationManager manager;
 
-
+    @Autowired
+    private CustomerService customerService;
+    
     @Autowired
     private JwtHelper helper;
 
@@ -72,4 +75,5 @@ public class AuthController {
         return "Credentials Invalid !!";
     }
 
+    
 }

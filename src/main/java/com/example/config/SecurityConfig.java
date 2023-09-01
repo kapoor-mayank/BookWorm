@@ -10,8 +10,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -22,6 +27,8 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import com.example.security.JwtAuthenticationEntryPoint;
 import com.example.security.JwtAuthenticationFilter;
+import com.example.services.CustomerServiceImpl;
+
 import org.springframework.web.filter.*;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
@@ -35,7 +42,10 @@ public class SecurityConfig {
 	private JwtAuthenticationEntryPoint point;
 	@Autowired
 	private JwtAuthenticationFilter filter;
-
+	@Autowired
+	private UserDetailsService userDetailService;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private CorsConfigurationSource corsConfigurationSource;
 
@@ -113,4 +123,17 @@ public class SecurityConfig {
 //
 //
 //	 }
+	@Bean
+	public DaoAuthenticationProvider doDaoAuthenticationProvider() {
+		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+		
+		daoAuthenticationProvider.setUserDetailsService(userDetailService);
+		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
+		return daoAuthenticationProvider;
+	}
+	
+	@Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration builder) throws Exception {
+        return builder.getAuthenticationManager();
+    }
 }
