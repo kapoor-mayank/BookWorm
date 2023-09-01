@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.entities.CustomerMaster;
@@ -14,8 +15,11 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Autowired
 	private CustomerMasterRepository customerRepository;
+	@Autowired
+    private PasswordEncoder passwordEncoder;
 	@Override
 	public void addCustomer(CustomerMaster customer) {
+		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 		customerRepository.save(customer);
 	}
 	@Override
