@@ -1,13 +1,10 @@
 package com.example.entities;
 
 import java.sql.Date;
-
 import java.util.Collection;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,10 +26,6 @@ public class CustomerMaster implements UserDetails{
     private String customerContactNo;
     private String profession;
     private String occupation;
-    
-    
-    
-    
     
     
     public String getProfession() {

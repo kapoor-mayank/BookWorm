@@ -9,6 +9,27 @@ public class ProductDto
 	private boolean isLibrary;
 	private double rentPerDay;
 	private double minRentDays;
+	private String filePath;
+	private String imagePath;
+	
+	
+	
+	
+	
+	
+	
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 	public long getId() {
 		return id;
 	}

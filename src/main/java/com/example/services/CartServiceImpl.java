@@ -51,6 +51,13 @@ public class CartServiceImpl implements ICartService
 	}
 
 
+	@Override
+	public void deleteById(long id) {
+		cartRepo.deleteById(id);
+		
+	}
+
+
 
 	
 

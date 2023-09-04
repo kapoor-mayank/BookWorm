@@ -16,5 +16,7 @@ public interface ICartService
 	public List<Cart> getCartByCustomerId(CustomerMaster id);
 	
 	public void deleteAll();
+	
+	public void deleteById(long id);
 
 }
