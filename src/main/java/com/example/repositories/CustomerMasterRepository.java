@@ -14,7 +14,14 @@ import java.util.List;
 @Repository
 public interface CustomerMasterRepository extends JpaRepository<CustomerMaster, Long> {
     @Query("SELECT c FROM CustomerMaster c WHERE c.customerId = ?1")
-    CustomerMaster getById(Long id);
+    public CustomerMaster getById(Long id);
     
     public Optional<CustomerMaster> findByCustomerEmail(String customerEmail);
+    
+    @Query("SELECT c FROM CustomerMaster c WHERE c.customerEmail = ?1")
+    public CustomerMaster getByEmail(String email);
+    
+    
+    
+    
 }

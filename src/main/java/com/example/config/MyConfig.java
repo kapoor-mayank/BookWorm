@@ -15,6 +15,10 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 class MyConfig {
+	
+	  public MyConfig() {
+		System.out.println("Inside my Config ");
+	}
 //    @Bean
 //    public UserDetailsService userDetailsService() {
 //        UserDetails userDetails = User.builder().
@@ -26,7 +30,9 @@ class MyConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    	PasswordEncoder obj =  new BCryptPasswordEncoder();
+    	  System.out.println("Inside the myconfig passwordEncoder "+obj);
+        return obj;
     }
 
     

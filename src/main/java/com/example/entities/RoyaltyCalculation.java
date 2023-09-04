@@ -1,10 +1,7 @@
 package com.example.entities;
 
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.time.LocalDate;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -14,7 +11,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -25,14 +21,29 @@ public class RoyaltyCalculation {
     private long roycalId;
     
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "royalty_id")
+    @JoinColumn(name = "Invoice_id")
     private InvoiceTable invoice;
     
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "ben_id")
     private BeneficiaryMaster beneficiary;
     
-    private Date roycalTrandate;
+    private LocalDate roycalTrandate;
+    
+    private int qty;
+    private String tranType;
+    private double salePrice;
+    private double basePrice;
+    private double royaltyOnBasePrice;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "productId")
+    private ProductMaster product;
+    
+    
+    
+    
+    
     
     public long getRoycalId() {
 		return roycalId;
@@ -60,14 +71,16 @@ public class RoyaltyCalculation {
 	public void setBeneficiary(BeneficiaryMaster beneficiary) {
 		this.beneficiary = beneficiary;
 	}
-	public Date getRoycalTrandate() {
+
+	
+	
+
+	public LocalDate getRoycalTrandate() {
 		return roycalTrandate;
 	}
-	public void setRoycalTrandate(Date roycalTrandate) {
+	public void setRoycalTrandate(LocalDate roycalTrandate) {
 		this.roycalTrandate = roycalTrandate;
 	}
-	
-	
 	public int getQty() {
 		return qty;
 	}
@@ -98,9 +111,7 @@ public class RoyaltyCalculation {
 	public void setRoyaltyOnBasePrice(double royaltyOnBasePrice) {
 		this.royaltyOnBasePrice = royaltyOnBasePrice;
 	}
-	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "productId")
-    private ProductMaster product;
+	
     
     @Override
 	public String toString() {
@@ -109,11 +120,7 @@ public class RoyaltyCalculation {
 				+ tranType + ", salePrice=" + salePrice + ", basePrice=" + basePrice + ", royaltyOnBasePrice="
 				+ royaltyOnBasePrice + "]";
 	}
-	private int qty;
-    private String tranType;
-    private double salePrice;
-    private double basePrice;
-    private double royaltyOnBasePrice;
+	
     
-    // Getter and setter methods
+    
 }

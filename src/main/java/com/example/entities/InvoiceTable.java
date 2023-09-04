@@ -23,6 +23,7 @@ public class InvoiceTable {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "custId")
     private CustomerMaster customerId;
+    
     private double invoiceAmount;
 
 	public Long getInvoiceId() {
