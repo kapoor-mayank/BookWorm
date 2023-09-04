@@ -32,5 +32,10 @@ public class CustomerServiceImpl implements CustomerService{
 		// load user from DATABASE
 		return customerRepository.findByCustomerEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
 	}
+	@Override
+	public CustomerMaster getByEmail(String email) {
+		CustomerMaster obj = customerRepository.getByEmail(email);
+		return obj;
+	}
 	
 }

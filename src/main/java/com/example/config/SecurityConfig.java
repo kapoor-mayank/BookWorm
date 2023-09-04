@@ -51,7 +51,7 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
+			
 //		http.csrf(csrf -> csrf.disable()).authorizeRequests().requestMatchers("/test").authenticated()
 //				.requestMatchers("/auth/login").permitAll().anyRequest().authenticated().and()
 //				.exceptionHandling(ex -> ex.authenticationEntryPoint(point))
@@ -77,19 +77,23 @@ public class SecurityConfig {
         .csrf().disable() // Disable CSRF
         .cors().and() // Enable CORS
         .authorizeRequests(authorizeRequests ->
+        
             authorizeRequests
                 .requestMatchers(HttpMethod.POST, "/auth/login", "/api/customer/add", "/api/products/getProducts", "/api/products/getByType/{id}").permitAll()
                 .requestMatchers(HttpMethod.GET,  "/api/products/getProducts", "/api/products/getByType/{id}").permitAll()// Allow login
                 .requestMatchers("/test").authenticated() // Protect "/test"
+                
         )
         .authorizeRequests()
             .anyRequest().authenticated() // Require authentication for other requests
         .and()
         .exceptionHandling(ex -> ex.authenticationEntryPoint(point)) // Exception handling
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-
+		
 
     http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+    System.out.println("Inside the Security config "+http);
+    
     return http.build(); // Build and return the SecurityFilterChain
 
 
@@ -126,14 +130,18 @@ public class SecurityConfig {
 	@Bean
 	public DaoAuthenticationProvider doDaoAuthenticationProvider() {
 		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+		System.out.println("Inside the security Config doDaoAuthenticationProvider");
 		
 		daoAuthenticationProvider.setUserDetailsService(userDetailService);
 		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
+		System.out.println("Inside the security Config doDaoAuthenticationProvider "+daoAuthenticationProvider);
 		return daoAuthenticationProvider;
 	}
 	
 	@Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration builder) throws Exception {
-        return builder.getAuthenticationManager();
+		AuthenticationManager obj = builder.getAuthenticationManager();
+		System.out.println("Inside the security Config doDaoAuthenticationProvider "+obj);
+		return obj;
     }
 }

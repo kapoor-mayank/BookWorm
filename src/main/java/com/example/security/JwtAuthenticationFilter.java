@@ -22,79 +22,81 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private Logger logger = LoggerFactory.getLogger(OncePerRequestFilter.class);
-    @Autowired
-    private JwtHelper jwtHelper;
+	private Logger logger = LoggerFactory.getLogger(OncePerRequestFilter.class);
+	@Autowired
+	private JwtHelper jwtHelper;
 
+	@Autowired
+	private UserDetailsService userDetailsService;
 
-    @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
 
 //        try {
 //            Thread.sleep(500);
 //        } catch (InterruptedException e) {
 //            throw new RuntimeException(e);
 //        }
-        //Authorization
+		// Authorization
+		System.out.println("Inside the JWt Authentication filter...1");
 
-        String requestHeader = request.getHeader("Authorization");
-        //Bearer 2352345235sdfrsfgsdfsdf
-        logger.info(" Header :  {}", requestHeader);
-        String username = null;
-        String token = null;
-        if (requestHeader != null && requestHeader.startsWith("Bearer")) {
-            //looking good
-            token = requestHeader.substring(7);
-            try {
+		String requestHeader = request.getHeader("Authorization");
+		System.out.println("Inside the JWt Authentication filter...2 "+requestHeader);
+		// Bearer 2352345235sdfrsfgsdfsdf
+		logger.info(" Header :  {}", requestHeader);
+		String username = null;
+		String token = null;
+		if (requestHeader != null && requestHeader.startsWith("Bearer")) {
+			// looking good
+			token = requestHeader.substring(7);
+			System.out.println("Inside the JWt Authentication filter...3 "+token);
+			try {
 
-                username = this.jwtHelper.getUsernameFromToken(token);
+				username = this.jwtHelper.getUsernameFromToken(token);
+				System.out.println("Inside the JWt Authentication filter...4 "+username);
+				
 
-            } catch (IllegalArgumentException e) {
-                logger.info("Illegal Argument while fetching the username !!");
-                e.printStackTrace();
-            } catch (ExpiredJwtException e) {
-                logger.info("Given jwt token is expired !!");
-                e.printStackTrace();
-            } catch (MalformedJwtException e) {
-                logger.info("Some changed has done in token !! Invalid Token");
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				logger.info("Illegal Argument while fetching the username !!");
+				e.printStackTrace();
+			} catch (ExpiredJwtException e) {
+				logger.info("Given jwt token is expired !!");
+				e.printStackTrace();
+			} catch (MalformedJwtException e) {
+				logger.info("Some changed has done in token !! Invalid Token");
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
 
-            }
+			}
 
+		} else {
+			System.out.println("Inside the JWt Authentication filter...5 ");
+			logger.info("Invalid Header Value !! ");
+		}
 
-        } else {
-            logger.info("Invalid Header Value !! ");
-        }
+		//
+		if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
+			// fetch user detail from username
+			UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+			Boolean validateToken = this.jwtHelper.validateToken(token, userDetails);
+			if (validateToken) {
 
-        //
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+				// set the authentication
+				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+						userDetails, null, userDetails.getAuthorities());
+				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+				SecurityContextHolder.getContext().setAuthentication(authentication);
 
+			} else {
+				logger.info("Validation fails !!");
+			}
 
-            //fetch user detail from username
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-            Boolean validateToken = this.jwtHelper.validateToken(token, userDetails);
-            if (validateToken) {
+		}
 
-                //set the authentication
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-
-
-            } else {
-                logger.info("Validation fails !!");
-            }
-
-
-        }
-
-        try {
+		try {
 			filterChain.doFilter(request, response);
 		} catch (java.io.IOException e) {
 			// TODO Auto-generated catch block
@@ -104,6 +106,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			e.printStackTrace();
 		}
 
-
-    }
+	}
 }

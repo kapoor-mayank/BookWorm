@@ -20,6 +20,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			org.springframework.security.core.AuthenticationException authException)
 			throws IOException, ServletException {
+		System.out.println("Inside the JWTAuthenticate ...1"+request);
 		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         PrintWriter writer = response.getWriter();
         writer.println("Access Denied !! " + authException.getMessage());

@@ -1,6 +1,7 @@
 package com.example.entities;
 
 import java.sql.Date;
+
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,27 @@ public class CustomerMaster implements UserDetails{
     private boolean isPremium;
     private Date premiumDate;
     private String customerContactNo;
-    // Other customer attributes
+    private String profession;
+    private String occupation;
+    
+    
+    
+    
+    
+    
+    public String getProfession() {
+		return profession;
+	}
+	public void setProfession(String profession) {
+		this.profession = profession;
+	}
+	public String getOccupation() {
+		return occupation;
+	}
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+	// Other customer attributes
 	public Long getCustomerId() {
 		return customerId;
 	}

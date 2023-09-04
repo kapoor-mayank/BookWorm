@@ -111,6 +111,7 @@ public class ProductMasterController {
 			newObje.setProductName(obj.getProductName());
 			newObje.setRentable(obj.isRentable());
 			newObje.setRentPerDay(obj.getRentPerDay());
+			System.out.println("Is rentable "+obj.isRentable());
 			sendList.add(newObje);
 			
 		}

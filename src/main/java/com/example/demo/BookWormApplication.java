@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class BookWormApplication {
 
 	public static void main(String[] args) {
+		System.out.println("Inside the main...");
 		SpringApplication.run(BookWormApplication.class, args);
 	}
 

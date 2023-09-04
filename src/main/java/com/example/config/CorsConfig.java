@@ -10,6 +10,7 @@ public class CorsConfig {
 	
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
+		System.out.println("Inside the CorsConfig");
 		
 		CorsConfiguration configuration = new CorsConfiguration();
         configuration.addAllowedOrigin("http://localhost:3000"); // Change this to your frontend URL
@@ -22,9 +23,12 @@ public class CorsConfig {
         configuration.addAllowedHeader("Content-Type");
         configuration.addAllowedHeader("Accept");
         configuration.setAllowCredentials(true);
+        System.out.println("Inside the CorsConfig end");
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
+        
+        System.out.println("Inside the corsConfig source "+source);
         return source;
 
 	}
