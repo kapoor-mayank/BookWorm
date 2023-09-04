@@ -1,9 +1,11 @@
 package com.example.controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,51 +34,62 @@ public class CartContoller {
 	CustomerService custService;
 	@Autowired
 	IProductMasterService prodService;
-
 	@PostMapping("/addtocart")
-	public ResponseEntity<String> addToCart(@RequestBody CartDto cart) {
-		System.out.println("Cart " + cart);
-		try {
-			CustomerMaster user = custService.getCustomerById(cart.getCustomerId());
-			ProductMaster product = prodService.getProduct(cart.getProductId());
-			Cart cartItem = new Cart();
-			cartItem.setCustomer(user);
-			cartItem.setProduct(product);
-			cartItem.setType(cart.getType());
-			cartItem.setQuantity(cart.getQuantity());
+	public ResponseEntity<Map<String, String>> addToCart(@RequestBody CartDto cart) {
+	    System.out.println("Cart " + cart);
+	    try {
+	        CustomerMaster user = custService.getCustomerById(cart.getCustomerId());
+	        ProductMaster product = prodService.getProduct(cart.getProductId());
+	        Cart cartItem = new Cart();
+	        cartItem.setCustomer(user);
+	        cartItem.setProduct(product);
+	        cartItem.setType(cart.getType());
+	        cartItem.setQuantity(cart.getQuantity());
 
-			cartService.addToCart(cartItem);
+	        cartService.addToCart(cartItem);
 
-			return ResponseEntity.ok("Item added to cart successfully");
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add item to cart");
-		}
+	        // Return a JSON response with a success message
+	        Map<String, String> response = new HashMap<>();
+	        response.put("message", "ok");
+
+	        return ResponseEntity.ok(response);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+
+	        // Return a JSON response with an error message
+	        Map<String, String> errorResponse = new HashMap<>();
+	        errorResponse.put("error", "Fail");
+
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+	    }
 	}
+
 
 	@GetMapping("/getallcart")
-	public ArrayList<CartSendDto> getAllCartItem() {
+	public ResponseEntity<List<CartSendDto>> getAllCartItem() {
+	    try {
+	        List<CartSendDto> list = new ArrayList<>();
+	        List<Cart> cartList = cartService.getAllCartList();
 
-		ArrayList<CartSendDto> list = new ArrayList<>();
+	        for (Cart cartItem : cartList) {
+	            CartSendDto obj = new CartSendDto();
+	            obj.setId(cartItem.getCartId());
+	            obj.setPrice(cartItem.getProduct().getProductSpCost());
+	            obj.setProductName(cartItem.getProduct().getProductName());
+	            obj.setQuantity(cartItem.getQuantity());
+	            obj.setTotalPrice(cartItem.getQuantity() * cartItem.getProduct().getProductSpCost());
+	            obj.setType(cartItem.getType());
 
-		ArrayList<Cart> cartList = cartService.getAllCartList();
+	            list.add(obj);
+	        }
 
-		for (Cart cartItem : cartList) {
-			CartSendDto obj = new CartSendDto();
-			obj.setId(cartItem.getCartId());
-			obj.setPrice(cartItem.getProduct().getProductSpCost());
-			obj.setProductName(cartItem.getProduct().getProductName());
-			obj.setQuantity(cartItem.getQuantity());
-			obj.setTotalPrice(cartItem.getQuantity() * cartItem.getProduct().getProductSpCost());
-			obj.setType(cartItem.getType());
-
-			list.add(obj);
-		}
-
-		return list;
-
+	        return ResponseEntity.ok(list);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+	    }
 	}
-	
+
 	
 	
 

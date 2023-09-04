@@ -20,4 +20,5 @@ public class JwtResponse {
 	private long userId;
 	
 	
+	
 }
